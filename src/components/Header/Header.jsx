@@ -28,6 +28,7 @@ function Header({cities}) {
     setValueInput(params);
     if (params.length >= 3) {
       setModalUniversitiesListVisable(true);
+
       api.getUniversity(params).then(res => setUniversities(res.items));
     } else {
       setModalUniversitiesListVisable(false);
