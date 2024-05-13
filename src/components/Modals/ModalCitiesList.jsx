@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Modal.scss';
 
-function Modal({isVisable, cities}) {
+function ModalCitiesList({isVisable, cities}) {
   const [citiesToRender, setCitiesToRender] = useState(cities);
   useEffect(() => {
     return setCitiesToRender(cities);
@@ -19,9 +19,9 @@ function Modal({isVisable, cities}) {
     localStorage.setItem('city', JSON.stringify(city));
   }
   return (
-    <section className={`modal ${isVisable && 'modal_type_isVisable'}`}>
+    <section className={`modal ${isVisable && 'modal_isVisable'}`}>
       <input className="modal__search" id="inputHeader" type="text" placeholder="Регион" onChange={handleInput} />
-      <div className="modal__city-list">
+      <div className="modal__list">
         {citiesToRender.length > 0 ? (
           citiesToRender.map(city => (
             <Link key={city.id} to={`${city.id}`}>
@@ -41,4 +41,4 @@ function Modal({isVisable, cities}) {
     </section>
   );
 }
-export default Modal;
+export default ModalCitiesList;
