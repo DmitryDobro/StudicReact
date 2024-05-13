@@ -10,29 +10,23 @@ import arrow from '../../img/arrow.svg';
 import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
 import {api} from '../../utils/Api.js';
-function Header({cities}) {
+function Header({cities, universities, modaUniversitiesListVisable, findUniversities, closeModal}) {
   const [modalCitiesListVisable, setModalCitiesListVisable] = useState(false);
-  const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
-  const [universities, setUniversities] = useState([]);
+  // const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
+  // const [universities, setUniversities] = useState([]);
   const [valueInput, setValueInput] = useState('');
   function handleModal() {
     console.log(modalVisable);
     setModalCitiesListVisable(!modalVisable);
   }
   function handleModal() {
-    setModalUniversitiesListVisable(false);
+    closeModal()
     setValueInput('');
   }
   function handleInput(evt) {
     let params = evt.target.value;
     setValueInput(params);
-    if (params.length >= 3) {
-      setModalUniversitiesListVisable(true);
-
-      api.getUniversity(params).then(res => setUniversities(res.items));
-    } else {
-      setModalUniversitiesListVisable(false);
-    }
+    findUniversities(params);
   }
 
   return (
