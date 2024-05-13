@@ -66,9 +66,9 @@ main {
 
 .btn {
   flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // // display: flex;
+  // justify-content: center;
+  // align-items: center;
   padding: 16px 24px;
   background: #0656b4;
   border-radius: 5px;
@@ -78,6 +78,7 @@ main {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #ffff;
+
   &.whiteBlue {
     background: #dfe9f5;
     color: #0656b4;

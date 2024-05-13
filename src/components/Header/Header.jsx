@@ -1,4 +1,5 @@
 import {useState} from 'react';
+
 import './/Header.scss';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
@@ -6,24 +7,30 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import logo from '../../img/logoHeader.svg';
 import arrow from '../../img/arrow.svg';
-import Modal from '../Modal/Modal';
-import ModalInput from '../ModalInput/ModalInput';
+import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
+import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
 import {api} from '../../utils/Api.js';
 function Header({cities}) {
-  const [modalVisable, setModalVisable] = useState(false);
-  const [modalInputVisable, setModalInputVisable] = useState(false);
+  const [modalCitiesListVisable, setModalCitiesListVisable] = useState(false);
+  const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
   const [universities, setUniversities] = useState([]);
+  const [valueInput, setValueInput] = useState('');
   function handleModal() {
     console.log(modalVisable);
-    setModalVisable(!modalVisable);
+    setModalCitiesListVisable(!modalVisable);
+  }
+  function handleModal() {
+    setModalUniversitiesListVisable(false);
+    setValueInput('');
   }
   function handleInput(evt) {
     let params = evt.target.value;
+    setValueInput(params);
     if (params.length >= 3) {
-      setModalInputVisable(true);
+      setModalUniversitiesListVisable(true);
       api.getUniversity(params).then(res => setUniversities(res.items));
     } else {
-      setModalInputVisable(false);
+      setModalUniversitiesListVisable(false);
     }
   }
 
@@ -39,12 +46,15 @@ function Header({cities}) {
               <img src={arrow} alt="" onClick={handleModal} />
             </span>
             <span className="header__city-name">Москва</span>
-            <Modal isVisable={modalVisable} cities={cities} />
+            <ModalCitiesList isVisable={modalCitiesListVisable} cities={cities} />
           </div>
           <div className="header__item header__item_type_input">
             <div className="header__input">
-              <input type="text" placeholder="Учебное заведение, специальность или профессия" onChange={handleInput}  />
-              <ModalInput isVisable={modalInputVisable} universities={universities}/>
+              <input type="text" placeholder="Учебное заведение, специальность или профессия" value={valueInput} onChange={handleInput} />
+              <button className={`btn header__btn   ${modaUniversitiesListVisable && 'header__btn_visable'}`} onClick={handleModal}>
+                Закрыть
+              </button>
+              <ModaUniversitiesList isVisable={modaUniversitiesListVisable} universities={universities} />
             </div>
           </div>
         </div>

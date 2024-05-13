@@ -1,13 +1,13 @@
-import './ModalInput.scss';
 import {useState, useEffect, useMemo} from 'react';
 import {Link} from 'react-router-dom';
-function ModalInput({isVisable, universities}) {
+import './Modal.scss';
+function ModaUniversitiesList({isVisable, universities}) {
   function test() {
     console.log(123);
   }
   return (
-    <section className={`ModalInput ${isVisable && 'ModalInput_type_isVisable'}`}>
-      <div className="ModalInput__university-list">
+    <section className={`modal modal_type_universitiesList ${isVisable && 'modal_isVisable'}`}>
+      <div className="modal__list">
         {universities.length > 0 ? (
           universities.map(university => (
             <Link key={university.id} to={`${university.id}`}>
@@ -27,4 +27,4 @@ function ModalInput({isVisable, universities}) {
     </section>
   );
 }
-export default ModalInput;
+export default ModaUniversitiesList;

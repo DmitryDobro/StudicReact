@@ -10,7 +10,10 @@
   transform: translateY(20px);
   opacity: 0;
 }
-.modal_type_isVisable {
+.modal_type_universitiesList{
+  width: 100%;
+}
+.modal_isVisable {
   opacity: 1;
   visibility: visible;
   transform: translateY(0px);
@@ -24,7 +27,7 @@
   border-radius: 100px;
   border: 1px solid #dfe9f5;
 }
-.modal__city-list {
+.modal__list {
   display: flex;
   flex-direction: column;
   color: #222;
@@ -41,8 +44,7 @@
     background-color: rgba(241, 241, 241, 0.5);
   }
 }
-.btn {
-}
+
 .modal__btn {
   display: block;
   width: 100%;
