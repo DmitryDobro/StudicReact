@@ -37,7 +37,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={'asd'} />
-        <Route path="/:id" element={<Main universities={universities} />} />
+        <Route path="/univers/:id" element={<Main universities={universities} />} />
       </Routes>
     </>
   );

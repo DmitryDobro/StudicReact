@@ -15,9 +15,8 @@ function Header({cities, universities, modaUniversitiesListVisable, findUniversi
   // const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
   // const [universities, setUniversities] = useState([]);
   const [valueInput, setValueInput] = useState('');
-  function handleModal() {
-    console.log(modalVisable);
-    setModalCitiesListVisable(!modalVisable);
+  function handleModalCities() {
+    setModalCitiesListVisable(!modalCitiesListVisable);
   }
   function handleModal() {
     closeModal()
@@ -38,7 +37,7 @@ function Header({cities, universities, modaUniversitiesListVisable, findUniversi
               <img src={logo} alt="Логотип" />
             </a>
             <span className="header__city-arrow icon border">
-              <img src={arrow} alt="" onClick={handleModal} />
+              <img src={arrow} alt="" onClick={handleModalCities} />
             </span>
             <span className="header__city-name">Москва</span>
             <ModalCitiesList isVisable={modalCitiesListVisable} cities={cities} />
