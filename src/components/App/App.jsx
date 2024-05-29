@@ -6,6 +6,8 @@ import Header from '../Header/Header.jsx';
 import {api} from '../../utils/Api.js';
 import Region from '../Region/Region.jsx';
 import Main from '../Main/Main.jsx';
+import Lead from '../Lead/Lead.jsx';
+import Footer from '../Footer/Footer.jsx';
 function App() {
   const [cities, setCities] = useState([]);
   const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
@@ -15,6 +17,7 @@ function App() {
       setCities(res[0].areas);
     });
   }, []);
+  
   function findUniversities(params) {
     if (params.length >= 3) {
       setModalUniversitiesListVisable(true);
@@ -35,10 +38,12 @@ function App() {
         universities={universities}
         closeModal={closeModal}
       />
+
       <Routes>
-        <Route path="/" element={'asd'} />
+        <Route path="/" element={<Lead />} />
         <Route path="/univers/:id" element={<Main universities={universities} />} />
       </Routes>
+      <Footer></Footer>
     </>
   );
 }

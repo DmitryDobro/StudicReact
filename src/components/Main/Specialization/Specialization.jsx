@@ -4,7 +4,6 @@ import SpecializationCard from './SpecializationCard';
 function Specialization({faculties}) {
   const [facultiesRender, setFacultiesRender] = useState([]);
   const [addMore, setAddMore] = useState(5);
-
   useEffect(() => {
     setFacultiesRender(faculties.slice(0, addMore));
   }, [faculties, addMore]);
@@ -14,66 +13,60 @@ function Specialization({faculties}) {
     setFacultiesRender(faculties.slice(0, addMore));
   }
 
-  function resort(selector, parametr) {
-    const nodeList = document.querySelectorAll(selector);
-    const dict = {};
-    const parent = nodeList[0].parentNode;
-    nodeList.forEach(node => {
-      const key = node.querySelector(parametr).innerText.trim().replace(/\D/g, '');
-      dict[key] = node;
-    });
-    const keys = Object.keys(dict);
-    // console.log(keys);
-    // console.log(Object.keys(dict));
-    keys.sort((a, b) => a - b).forEach(k => parent.appendChild(dict[k]));
+  function resort(parametr) {
+    console.log(facultiesRender);
+    setFacultiesRender([...facultiesRender].sort((a, b) => a[parametr] - b[parametr]));
   }
 
   return (
-    <div class="specialization">
-      <div class="specialization-header">
-        <h2 class="specialization-title boldTxt">Специальности</h2>
-        <span class="specialization-subtile smallTxtOS">{`${faculties.length} ${
+    <div className="specialization">
+      <div className="specialization-header">
+        <h2 className="specialization-title boldTxt">Специальности</h2>
+        <span className="specialization-subtile smallTxtOS">{`${faculties.length} ${
           faculties.length > 4 ? 'специальностей' : 'специальности'
         } `}</span>
       </div>
-      <div class="specialization-filter">
+      <div className="specialization-filter">
         <ul>
           <span>Сортировать:</span>
           <li>
             <button
               onClick={() => {
-                resort('.specialization__card', '.payment');
+                resort('priсe');
               }}
               id="payment">
               по оплате в год
             </button>
           </li>
           <li>
-            <button id="2">по отзывам</button>
-          </li>
-          <li>
             <button
               id="points"
               onClick={() => {
-                resort('.specialization__card', '.points');
+                resort('score');
               }}>
               по проходному баллу
             </button>
           </li>
           <li>
-            <button id="places">по количеству бюджетных мест</button>
+            <button
+              id="places"
+              onClick={() => {
+                resort('places');
+              }}>
+              по количеству бюджетных мест
+            </button>
           </li>
         </ul>
       </div>
-      <div class="specialization-body">
-        <div class="specialization-row">
+      <div className="specialization-body">
+        <div className="specialization-row">
           {facultiesRender.map(faculty => (
             <SpecializationCard faculty={faculty} key={faculty.id} />
           ))}
         </div>
         {facultiesRender.length < faculties.length && (
-          <div class="specialization-link">
-            <button onClick={addFacultiesRender} class="btn whiteBlue">
+          <div className="specialization-link">
+            <button onClick={addFacultiesRender} className="btn whiteBlue">
               Показать еще специальности
             </button>
           </div>

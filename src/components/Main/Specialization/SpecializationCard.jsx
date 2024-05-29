@@ -5,12 +5,13 @@ import icon__bank from '../../../img/icon__bank.svg';
 import icon__flag from '../../../img/icon__flag.svg';
 import icon__bed from '../../../img/icon__bed.svg';
 function SpecializationCard({faculty}) {
-  function getRandom(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-  const [price, setPrice] = useState(Math.round(getRandom(50000, 150000) / 1000) * 1000);
-  const [score, setScore] = useState(getRandom(100, 200));
-  const [place, setPlace] = useState(getRandom(20, 50));
+  // console.log(faculty);
+  // function getRandom(min, max) {
+  //   return Math.floor(Math.random() * (max - min)) + min;
+  // }
+  // const [price, setPrice] = useState(Math.round(getRandom(50000, 150000) / 1000) * 1000);
+  // const [score, setScore] = useState(getRandom(100, 200));
+  // const [place, setPlace] = useState(getRandom(20, 50));
   return (
     <div className="specialization__card">
       <div className="specialization__card-section">
@@ -45,15 +46,15 @@ function SpecializationCard({faculty}) {
 
         <div className="specialization-line">
           <span className="line-text specialization-line_text  smallTxtOS">Бюджетных мест</span>
-          <span className="line-text specialization-line_text mediumTxtFormular places">{place}</span>
+          <span className="line-text specialization-line_text mediumTxtFormular places">{faculty.place}</span>
         </div>
         <div className="specialization-line">
           <span className="line-text specialization-line_text  smallTxtOS">Проходной балл</span>
-          <span className="line-text specialization-line_text points mediumTxtFormular">{score}</span>
+          <span className="line-text specialization-line_text points mediumTxtFormular">{faculty.score}</span>
         </div>
         <div className="specialization-line">
           <span className="line-text specialization-line_text  smallTxtOS">Оплата в год</span>
-          <span className="line-text specialization-line_text mediumTxtFormular payment">от {price} &#8381;</span>
+          <span className="line-text specialization-line_text mediumTxtFormular payment">от {faculty.priсe} &#8381;</span>
         </div>
       </div>
     </div>

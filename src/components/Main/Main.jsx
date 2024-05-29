@@ -7,30 +7,47 @@ import Aside from './Aside/Aside';
 import MainInformation from './MainInformation/MainInformation';
 import Specialization from './Specialization/Specialization';
 import {api} from '../../utils/Api';
+import AboutUnivers from './AboutUnivers/AboutUnivers';
+
 function Main({universities}) {
-  let universityFromLocalStorage = JSON.parse(localStorage.getItem('university'));
   let {id} = useParams();
-  const [university, setUniversity] = useState(universityFromLocalStorage);
+  
+  const university = JSON.parse(localStorage.getItem('university'));
   const [faculties, setFaculties] = useState([]);
+  function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   useEffect(() => {
-    if (universityFromLocalStorage) {
-      setUniversity(universityFromLocalStorage);
-      api.getUniversityFaculties(university.id).then(res => setFaculties(res));
-      console.log(universities.find(f => f.id === id));
+    if (university) {
+      api.getUniversityFaculties(university.id).then(data => {
+        data.map(item => {
+          let price = Math.round(getRandom(50000, 150000) / 1000) * 1000;
+          let score = getRandom(100, 200);
+          let place = getRandom(20, 70);
+          item.priсe = price;
+          item.score = score;
+          item.place = place;
+        });
+        console.log(data);
+        setFaculties(data);
+      });
     } else {
       console.log(universities.find(f => f.id === id));
       return setUniversity(universities.find(f => f.id === id));
     }
   }, [id]);
 
+
   return (
     <main className="main">
       <Banner university={university} />
-      <section class="main__body container">
+      <section className="main__body container">
         <Aside />
-        <div class="main__content">
+        <div className="main__content">
           <MainInformation />
           <Specialization faculties={faculties} />
+          <AboutUnivers />
         </div>
       </section>
     </main>
