@@ -1,62 +1,91 @@
-import {useState} from 'react';
-
-import './/Header.scss';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
+import './/Header.scss';
 import logo from '../../img/logoHeader.svg';
 import arrow from '../../img/arrow.svg';
 import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
-import {api} from '../../utils/Api.js';
-function Header({cities}) {
+function Header({cities, universities, modaUniversitiesListVisable, findUniversities, closeModal}) {
   const [modalCitiesListVisable, setModalCitiesListVisable] = useState(false);
-  const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
-  const [universities, setUniversities] = useState([]);
+  const [burgerIsActive, setBurgerIsActive] = useState(false);
   const [valueInput, setValueInput] = useState('');
-  function handleModal() {
-    console.log(modalVisable);
-    setModalCitiesListVisable(!modalVisable);
+  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
+  const [citiesToRender, setCitiesToRender] = useState(cities);
+  const [chooseCity, setChooseCity] = useState('');
+
+  useEffect(() => {
+    setCitiesToRender(cities);
+    cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
+  }, [cities]);
+  function handleFilteredCities(param) {
+    let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
+    setCitiesToRender(findCities);
+    console.log(findCities);
+  }
+function closeModalSities(){
+  setModalCitiesListVisable(false)
+}
+  function handleModalCities() {
+    setModalCitiesListVisable(!modalCitiesListVisable);
   }
   function handleModal() {
-    setModalUniversitiesListVisable(false);
+    closeModal();
     setValueInput('');
   }
   function handleInput(evt) {
     let params = evt.target.value;
     setValueInput(params);
-    if (params.length >= 3) {
-      setModalUniversitiesListVisable(true);
-
-      api.getUniversity(params).then(res => setUniversities(res.items));
-    } else {
-      setModalUniversitiesListVisable(false);
-    }
+    findUniversities(params);
   }
-
+  function handleMobileMenu() {
+    setBurgerIsActive(!burgerIsActive);
+  }
   return (
     <header className="header">
       <div className="container">
         <div className="header__content">
+          <div class={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
+            <span></span>
+          </div>
           <div className="header__item">
-            <a className="header__logo" href="#">
+            <Link className="header__logo" to="/">
               <img src={logo} alt="Логотип" />
-            </a>
-            <span className="header__city-arrow icon border">
-              <img src={arrow} alt="" onClick={handleModal} />
-            </span>
-            <span className="header__city-name">Москва</span>
-            <ModalCitiesList isVisable={modalCitiesListVisable} cities={cities} />
+            </Link>
+            <div className="header__city-box">
+              <span className="header__city-arrow icon border">
+                <img src={arrow} alt="" onClick={handleModalCities} />
+              </span>
+              <span className="header__city-name">{cityFromLocalStorage ? cityFromLocalStorage.name : ''}</span>
+            </div>
+
+            <ModalCitiesList
+              isVisable={modalCitiesListVisable}
+              cities={cities}
+              closeModalSities={closeModalSities}
+              citiesToRender={citiesToRender}
+              handleFilteredCities={handleFilteredCities}
+              setChooseCity={setChooseCity}
+            />
           </div>
           <div className="header__item header__item_type_input">
             <div className="header__input">
-              <input type="text" placeholder="Учебное заведение, специальность или профессия" value={valueInput} onChange={handleInput} />
-              <button className={`btn header__btn   ${modaUniversitiesListVisable && 'header__btn_visable'}`} onClick={handleModal}>
-                Закрыть
+              <input type="text" placeholder="Учебное заведение" value={valueInput} onChange={handleInput} />
+              <button
+                className={`btn header__btn noneColor   ${modaUniversitiesListVisable && 'header__btn_visable'}`}
+                onClick={handleModal}>
+                X
               </button>
               <ModaUniversitiesList isVisable={modaUniversitiesListVisable} universities={universities} />
             </div>
+          </div>
+
+          <div class="header__item header__item_type_profile">
+            <div class="header__profile-avatar"></div>
+            <div class="header__profile-name">Авторизация</div>
           </div>
         </div>
         <div className="header-navbar">

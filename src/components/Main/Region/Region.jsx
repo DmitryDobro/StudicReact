@@ -1,9 +1,11 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import Aside from '../Univers/Aside/Aside';
+import './Region.scss';
 function Region({cities}) {
-  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
-  let {id} = useParams();
+  const cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
+  let {Regionid} = useParams();
   const [city, setCity] = useState({});
   useEffect(() => {
     if (cityFromLocalStorage) {
@@ -11,7 +13,7 @@ function Region({cities}) {
     } else {
       return setCity(cities.find(f => f.id === id));
     }
-  }, [id]);
+  }, [Regionid]);
   //   const city = React.useMemo(() => {
   //     if (cityFromLocalStorage) {
   //       return cityFromLocalStorage;
@@ -21,9 +23,16 @@ function Region({cities}) {
   //   });
 
   return (
-    <span>
-      <p>{city.name}</p>
-    </span>
+    <section className="region container">
+      <div className="region__body">
+        <Aside />
+        <div className="region__card-list">
+          <div className="region__card">
+            <h2 className="region__title">Список институтов в {city.name}</h2>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 export default Region;

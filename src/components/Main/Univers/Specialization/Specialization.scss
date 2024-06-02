@@ -1,0 +1,33 @@
+.specialization {
+  margin-bottom: 50px;
+}
+.specialization-header {
+  margin-bottom: 22px;
+}
+
+.specialization-filter {
+  ul {
+    display: flex;
+    span {
+      margin-right: 20px;
+      font-size: 13px;
+      line-height: 154%;
+      color: #222222;
+    }
+    li {
+      margin-right: 50px;
+      font-size: 13px;
+      line-height: 154%;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+.specialization-body {
+}
+
+

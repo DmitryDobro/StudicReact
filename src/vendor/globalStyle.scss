@@ -21,6 +21,7 @@ body {
 .container {
   max-width: 1215px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 #root {
   min-height: 100%;
@@ -43,7 +44,7 @@ main {
   @include adaptiv-font(16, 13);
   line-height: 188%;
 }
-._smallTxtOS {
+.smallTxtOS {
   font-family: 'Open Sans';
   font-size: 13px;
   // @include adaptiv-font(13, 11);
@@ -52,7 +53,6 @@ main {
 .boldTxtFormular {
   font-family: 'Formular';
   @include adaptiv-font(18, 15);
-  // font-size: 18px;
   line-height: 133%;
   color: #222222;
 }
@@ -66,9 +66,9 @@ main {
 
 .btn {
   flex: 1 1 auto;
-  // // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 16px 24px;
   background: #0656b4;
   border-radius: 5px;
