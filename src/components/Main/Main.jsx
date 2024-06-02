@@ -1,17 +1,16 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
 import './Main.scss';
-import Banner from './Banner/Banner';
-import Aside from './Aside/Aside';
-import MainInformation from './MainInformation/MainInformation';
-import Specialization from './Specialization/Specialization';
-import {api} from '../../utils/Api';
-import AboutUnivers from './AboutUnivers/AboutUnivers';
+import Univers from './Univers/Univers.jsx';
+import Lead from './Lead/Lead.jsx';
+import Region from './Region/Region.jsx';
+
+import {api} from '../../utils/Api.js';
 
 function Main({universities}) {
   let {id} = useParams();
-  
   const university = JSON.parse(localStorage.getItem('university'));
   const [faculties, setFaculties] = useState([]);
   function getRandom(min, max) {
@@ -29,27 +28,20 @@ function Main({universities}) {
           item.score = score;
           item.place = place;
         });
-        console.log(data);
         setFaculties(data);
       });
     } else {
-      console.log(universities.find(f => f.id === id));
       return setUniversity(universities.find(f => f.id === id));
     }
   }, [id]);
 
-
   return (
     <main className="main">
-      <Banner university={university} />
-      <section className="main__body container">
-        <Aside />
-        <div className="main__content">
-          <MainInformation />
-          <Specialization faculties={faculties} />
-          <AboutUnivers />
-        </div>
-      </section>
+      <Routes>
+        <Route path="/" element={<Lead />} />
+        <Route path="/univers/:id/*" element={<Univers university={university} faculties={faculties} />} />
+        <Route path="/region/:Regionid" element={<Region />} />
+      </Routes>
     </main>
   );
 }

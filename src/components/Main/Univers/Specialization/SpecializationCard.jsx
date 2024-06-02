@@ -1,17 +1,11 @@
 import {useState} from 'react';
 import './SpecializationCard.scss';
-import cardPhoto from '../../../img/Tech.jpg';
-import icon__bank from '../../../img/icon__bank.svg';
-import icon__flag from '../../../img/icon__flag.svg';
-import icon__bed from '../../../img/icon__bed.svg';
+import cardPhoto from '../../../../img/Tech.jpg';
+import icon__bank from '../../../../img/icon__bank.svg';
+import icon__flag from '../../../../img/icon__flag.svg';
+import icon__bed from '../../../../img/icon__bed.svg';
 function SpecializationCard({faculty}) {
-  // console.log(faculty);
-  // function getRandom(min, max) {
-  //   return Math.floor(Math.random() * (max - min)) + min;
-  // }
-  // const [price, setPrice] = useState(Math.round(getRandom(50000, 150000) / 1000) * 1000);
-  // const [score, setScore] = useState(getRandom(100, 200));
-  // const [place, setPlace] = useState(getRandom(20, 50));
+
   return (
     <div className="specialization__card">
       <div className="specialization__card-section">
@@ -32,7 +26,7 @@ function SpecializationCard({faculty}) {
         </div>
       </div>
       <div className="specialization__card-section">
-        <div className="specialization-icons">
+        <div className="specialization__icons">
           <div className="icon grey">
             <img src={icon__bank} alt="" />
           </div>
@@ -43,18 +37,17 @@ function SpecializationCard({faculty}) {
             <img src={icon__bed} alt="" />
           </div>
         </div>
-
-        <div className="specialization-line">
-          <span className="line-text specialization-line_text  smallTxtOS">Бюджетных мест</span>
-          <span className="line-text specialization-line_text mediumTxtFormular places">{faculty.place}</span>
+        <div className="specialization__card-stats">
+          <span className="specialization__card-stats-name smallTxtOS">Бюджетных мест</span>
+          <span className="specialization__card-stats-number  mediumTxtFormular places">{faculty.place}</span>
         </div>
-        <div className="specialization-line">
-          <span className="line-text specialization-line_text  smallTxtOS">Проходной балл</span>
-          <span className="line-text specialization-line_text points mediumTxtFormular">{faculty.score}</span>
+        <div className="specialization__card-stats">
+          <span className="specialization__card-stats-name smallTxtOS">Проходной балл</span>
+          <span className="specialization__card-stats-number points mediumTxtFormular">{faculty.score}</span>
         </div>
-        <div className="specialization-line">
-          <span className="line-text specialization-line_text  smallTxtOS">Оплата в год</span>
-          <span className="line-text specialization-line_text mediumTxtFormular payment">от {faculty.priсe} &#8381;</span>
+        <div className="specialization__card-stats">
+          <span className="specialization__card-stats-name smallTxtOS">Оплата в год</span>
+          <span className="specialization__card-stats-number mediumTxtFormular payment">от {faculty.priсe} &#8381;</span>
         </div>
       </div>
     </div>

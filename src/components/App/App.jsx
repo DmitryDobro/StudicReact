@@ -1,12 +1,8 @@
 import {useState, useEffect} from 'react';
-import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header.jsx';
-
-import {api} from '../../utils/Api.js';
-import Region from '../Region/Region.jsx';
 import Main from '../Main/Main.jsx';
-import Lead from '../Lead/Lead.jsx';
+import {api} from '../../utils/Api.js';
 import Footer from '../Footer/Footer.jsx';
 function App() {
   const [cities, setCities] = useState([]);
@@ -17,11 +13,12 @@ function App() {
       setCities(res[0].areas);
     });
   }, []);
-  
+
   function findUniversities(params) {
     if (params.length >= 3) {
       setModalUniversitiesListVisable(true);
       api.getUniversity(params).then(res => setUniversities(res.items));
+      console.log(universities);
     } else {
       setModalUniversitiesListVisable(false);
     }
@@ -38,11 +35,15 @@ function App() {
         universities={universities}
         closeModal={closeModal}
       />
+      <Main></Main>
+      {/* <section class="mobile-menu">
+        <div class="mobile-menu_conteiner">
+          <div class="mobile-menu_content">
 
-      <Routes>
-        <Route path="/" element={<Lead />} />
-        <Route path="/univers/:id" element={<Main universities={universities} />} />
-      </Routes>
+          </div>
+          <span class="close">&#10006;</span>
+        </div>
+      </section> */}
       <Footer></Footer>
     </>
   );

@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import './AboutUnivers.scss';
-import photoUniverLG from '../../../img/Univers/fotoUniverBG.jpg';
-import photoUniver from '../../../img/Univers/fotoUnivers.jpg';
-import photoUniver2 from '../../../img/Univers/fotoUnivers2.jpg';
-import photoUniver3 from '../../../img/Univers/fotoUnivers3.jpg';
-import photoUniver4 from '../../../img/Univers/fotoUnivers4.jpg';
+import photoUniverLG from '../../../../img/Univers/fotoUniverBG.jpg';
+import photoUniver from '../../../../img/Univers/fotoUnivers.jpg';
+import photoUniver2 from '../../../../img/Univers/fotoUnivers2.jpg';
+import photoUniver3 from '../../../../img/Univers/fotoUnivers3.jpg';
+import photoUniver4 from '../../../../img/Univers/fotoUnivers4.jpg';
 export default function AboutUnivers() {
   const [isVisable, setIsVisable] = useState(false);
   function showText() {
