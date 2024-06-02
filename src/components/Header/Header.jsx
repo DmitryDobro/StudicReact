@@ -33,6 +33,7 @@ function closeModalSities(){
     setModalCitiesListVisable(!modalCitiesListVisable);
   }
   function handleModal() {
+    console.log(123);
     closeModal();
     setValueInput('');
   }
@@ -61,7 +62,6 @@ function closeModalSities(){
               </span>
               <span className="header__city-name">{cityFromLocalStorage ? cityFromLocalStorage.name : ''}</span>
             </div>
-
             <ModalCitiesList
               isVisable={modalCitiesListVisable}
               cities={cities}

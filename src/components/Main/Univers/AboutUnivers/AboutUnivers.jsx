@@ -5,6 +5,13 @@ import photoUniver from '../../../../img/Univers/fotoUnivers.jpg';
 import photoUniver2 from '../../../../img/Univers/fotoUnivers2.jpg';
 import photoUniver3 from '../../../../img/Univers/fotoUnivers3.jpg';
 import photoUniver4 from '../../../../img/Univers/fotoUnivers4.jpg';
+
+
+import { Button } from 'react-bootstrap';
+
+
+
+// import "../../../../../node_modules/bootstrap/scss/_accordion.scss";
 export default function AboutUnivers() {
   const [isVisable, setIsVisable] = useState(false);
   function showText() {
@@ -60,6 +67,9 @@ export default function AboutUnivers() {
             {isVisable ? 'Свернуть' : 'Развернуть'}
           </span>
         </div>
+        import Accordion from 'react-bootstrap/Accordion';
+
+
       </div>
     </div>
   );
