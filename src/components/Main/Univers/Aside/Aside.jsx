@@ -7,7 +7,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Основная информация</a>
+              <a>Основная информация</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -15,7 +15,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Специальности</a>
+              <a>Специальности</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -23,7 +23,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Об университете</a>
+              <a>Об университете</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -31,7 +31,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Контакты</a>
+              <a>Контакты</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -39,7 +39,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Отзывы</a>
+              <a>Отзывы</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -47,7 +47,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Преподаватели</a>
+              <a>Преподаватели</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -55,7 +55,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Профессии</a>
+              <a>Профессии</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -63,7 +63,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Новости</a>
+              <a>Новости</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -71,7 +71,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Задать вопрос</a>
+              <a>Задать вопрос</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
@@ -79,7 +79,7 @@ function Aside() {
         <li>
           <div className="aside-list_content">
             <div className="aside-list_title">
-              <a href="#">Часто задаваемые вопросы</a>
+              <a>Часто задаваемые вопросы</a>
             </div>
             <div className="aside-list_amount">100</div>
           </div>
