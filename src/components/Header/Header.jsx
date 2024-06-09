@@ -103,7 +103,14 @@ function Header({findUniversities}) {
               loop={false}
               slidesPerView={'auto'}
               slidesPerGroup={2}
-              spaceBetween={10}
+              spaceBetween={25}
+              simulateTouch={false}
+              watchOverflow={true}
+              keyboard={{
+                enabled: true,
+                onlyInViewport: true,
+                pageUpDown: true,
+              }}
               navigation={{nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'}}>
               <SwiperSlide className="header-navbar_slide SwiperSlide">
                 <a href="#">Вузы</a>
