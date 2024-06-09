@@ -1,54 +1,58 @@
 import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import './/Header.scss';
-import logo from '../../img/logoHeader.svg';
-import arrow from '../../img/arrow.svg';
+import {logo, arrow} from '../../img/_img.js';
 import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
-function Header({cities, universities, modaUniversitiesListVisable, findUniversities, closeModal}) {
-  const [modalCitiesListVisable, setModalCitiesListVisable] = useState(false);
+
+import {ToggleCities, ToggleMobileMenu, ToggleUnivers} from '../../store/visableSlicer.js';
+
+function Header({findUniversities}) {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
-  const [valueInput, setValueInput] = useState('');
+  const [valueInputUnivers, setValueInputUnivers] = useState('');
+  const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
+
+  const cities = useSelector(state => state.cities.cities);
   let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
   const [citiesToRender, setCitiesToRender] = useState(cities);
-  const [chooseCity, setChooseCity] = useState('');
+  const dispatch = useDispatch();
+  // const modalCitiesVisable = useSelector(state => state.visable.modalCitiesVisable);
+  const [modalCitiesVisable, setModalCitiesVisable] = useState(false);
 
-  useEffect(() => {
-    setCitiesToRender(cities);
-    cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
-  }, [cities]);
   function handleFilteredCities(param) {
     let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
-    console.log(findCities);
   }
-function closeModalSities(){
-  setModalCitiesListVisable(false)
-}
+
   function handleModalCities() {
-    setModalCitiesListVisable(!modalCitiesListVisable);
+    setModalCitiesVisable(!modalCitiesVisable);
+    setCitiesToRender(cities);
   }
-  function handleModal() {
-    closeModal();
-    setValueInput('');
+  function closeModalUnivers() {
+    dispatch(ToggleUnivers(false));
+    setValueInputUnivers('');
   }
   function handleInput(evt) {
     let params = evt.target.value;
-    setValueInput(params);
-    findUniversities(params);
+    setValueInputUnivers(params);
+    return function (dispatch) {
+      dispatch(findUniversities(params));
+    };
   }
   function handleMobileMenu() {
+    dispatch(ToggleMobileMenu());
     setBurgerIsActive(!burgerIsActive);
   }
   return (
     <header className="header">
       <div className="container">
         <div className="header__content">
-          <div class={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
+          <div className={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
             <span></span>
           </div>
           <div className="header__item">
@@ -60,32 +64,35 @@ function closeModalSities(){
                 <img src={arrow} alt="" onClick={handleModalCities} />
               </span>
               <span className="header__city-name">{cityFromLocalStorage ? cityFromLocalStorage.name : ''}</span>
+              <ModalCitiesList
+                isVisable={modalCitiesVisable}
+                setIsVisable={setModalCitiesVisable}
+                cities={cities}
+                citiesToRender={citiesToRender}
+                handleFilteredCities={handleFilteredCities}
+              />
             </div>
-
-            <ModalCitiesList
-              isVisable={modalCitiesListVisable}
-              cities={cities}
-              closeModalSities={closeModalSities}
-              citiesToRender={citiesToRender}
-              handleFilteredCities={handleFilteredCities}
-              setChooseCity={setChooseCity}
-            />
           </div>
           <div className="header__item header__item_type_input">
             <div className="header__input">
-              <input type="text" placeholder="Учебное заведение" value={valueInput} onChange={handleInput} />
-              <button
-                className={`btn header__btn noneColor   ${modaUniversitiesListVisable && 'header__btn_visable'}`}
-                onClick={handleModal}>
+              <input
+                type="text"
+                placeholder="Учебное заведение"
+                value={valueInputUnivers}
+                onChange={evt => {
+                  dispatch(handleInput(evt));
+                }}
+              />
+              <button className={`btn header__btn noneColor   ${modalUniversVisable && 'header__btn_visable'}`} onClick={closeModalUnivers}>
                 X
               </button>
-              <ModaUniversitiesList isVisable={modaUniversitiesListVisable} universities={universities} />
+              <ModaUniversitiesList isVisable={modalUniversVisable} closeModalUnivers={closeModalUnivers} />
             </div>
           </div>
 
-          <div class="header__item header__item_type_profile">
-            <div class="header__profile-avatar"></div>
-            <div class="header__profile-name">Авторизация</div>
+          <div className="header__item header__item_type_profile">
+            <div className="header__profile-avatar"></div>
+            <div className="header__profile-name">Авторизация</div>
           </div>
         </div>
         <div className="header-navbar">
@@ -96,13 +103,7 @@ function closeModalSities(){
               loop={false}
               slidesPerView={'auto'}
               slidesPerGroup={2}
-              simulateTouch={false}
-              watchOverflow={true}
-              keyboard={{
-                enabled: true,
-                onlyInViewport: true,
-                pageUpDown: true,
-              }}
+              spaceBetween={10}
               navigation={{nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'}}>
               <SwiperSlide className="header-navbar_slide SwiperSlide">
                 <a href="#">Вузы</a>

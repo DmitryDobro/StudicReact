@@ -1,9 +1,11 @@
-import {useState, useEffect, useMemo} from 'react';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Modal.scss';
-function ModaUniversitiesList({isVisable, universities}) {
+function ModaUniversitiesList({isVisable, closeModalUnivers}) {
+  const universities = useSelector(state => state.universities.universities);
   function addUniversityToLS(university) {
     localStorage.setItem('university', JSON.stringify(university));
+    closeModalUnivers();
   }
   return (
     <section className={`modal modal_type_universitiesList ${isVisable && 'modal_isVisable'}`}>

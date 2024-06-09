@@ -1,9 +1,6 @@
 import './Banner.scss';
-import UniversPhoto from '../../../../img/UniversPhoto.jpeg';
-import logoUnivers from '../../../../img/logoUnivers.png';
-import bell from '../../../../img/bell.svg';
-import heart from '../../../../img/heart.svg';
-import downold from '../../../../img/downold.svg';
+
+import {UniversPhoto, logoUnivers, bell, heart, downold} from '../../../../img/_img';
 function Banner({university}) {
   return (
     <section className="banner">

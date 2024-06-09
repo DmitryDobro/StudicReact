@@ -4,47 +4,46 @@ import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
 import {api} from '../../utils/Api.js';
 import Footer from '../Footer/Footer.jsx';
-function App() {
-  const [cities, setCities] = useState([]);
-  const [modaUniversitiesListVisable, setModalUniversitiesListVisable] = useState(false);
-  const [universities, setUniversities] = useState([]);
-  useEffect(() => {
-    api.getCities().then(res => {
-      setCities(res[0].areas);
-    });
-  }, []);
+import {useDispatch, useSelector} from 'react-redux';
+import {ToggleUnivers} from '../../store/visableSlicer.js';
+import {addCities} from '../../store/citiesListSlicer.js';
+import {findUniversitiesReducer} from '../../store/universitiesListSlicer.js';
+import { ModalMobileMenu } from '../Modals/ModalMobileMenu.jsx';
 
+function App() {
+  const dispatch = useDispatch();
+  const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
+  const universities = useSelector(state => state.universities.universities);
+  const cities = useSelector(state => state.cities.cities);
+  useEffect(() => {
+    api.getCities().then(res => dispatch(addCities(res[0].areas)));
+  }, []);
   function findUniversities(params) {
-    if (params.length >= 3) {
-      setModalUniversitiesListVisable(true);
-      api.getUniversity(params).then(res => setUniversities(res.items));
-      console.log(universities);
-    } else {
-      setModalUniversitiesListVisable(false);
-    }
+    return function (dispatch) {
+      if (params.length >= 3) {
+        dispatch(ToggleUnivers(true));
+        api.getUniversity(params).then(res => dispatch(findUniversitiesReducer(res.items)));
+      } else {
+        dispatch(ToggleUnivers(false));
+      }
+    };
   }
   function closeModal() {
-    setModalUniversitiesListVisable(false);
+    dispatch({type: 'TOGGLE_UNIVERS', payload: false});
   }
   return (
     <>
       <Header
         cities={cities}
         findUniversities={findUniversities}
-        modaUniversitiesListVisable={modaUniversitiesListVisable}
+        modalUniversVisable={modalUniversVisable}
         universities={universities}
         closeModal={closeModal}
       />
-      <Main></Main>
-      {/* <section class="mobile-menu">
-        <div class="mobile-menu_conteiner">
-          <div class="mobile-menu_content">
+      <Main cities={cities}></Main>
 
-          </div>
-          <span class="close">&#10006;</span>
-        </div>
-      </section> */}
       <Footer></Footer>
+      <ModalMobileMenu ></ModalMobileMenu>
     </>
   );
 }

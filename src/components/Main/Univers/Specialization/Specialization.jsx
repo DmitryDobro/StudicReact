@@ -14,7 +14,6 @@ function Specialization({faculties}) {
   }
 
   function resort(parametr) {
-    console.log(facultiesRender);
     setFacultiesRender([...facultiesRender].sort((a, b) => a[parametr] - b[parametr]));
   }
 
@@ -23,40 +22,44 @@ function Specialization({faculties}) {
       <div className="specialization-header">
         <h2 className="specialization-title boldTxt">Специальности</h2>
         <span className="specialization-subtile smallTxtOS">{`${faculties.length} ${
-          faculties.length > 4 ? 'специальностей' : 'специальности'
+          faculties.length == 1 ? 'специальность' : faculties.length > 4 || faculties.length == 0 ? 'специальностей' : 'специальности'
         } `}</span>
       </div>
       <div className="specialization-filter">
-        <ul>
-          <span>Сортировать:</span>
-          <li>
-            <button
-              onClick={() => {
-                resort('priсe');
-              }}
-              id="payment">
-              по оплате в год
-            </button>
-          </li>
-          <li>
-            <button
-              id="points"
-              onClick={() => {
-                resort('score');
-              }}>
-              по проходному баллу
-            </button>
-          </li>
-          <li>
-            <button
-              id="places"
-              onClick={() => {
-                resort('places');
-              }}>
-              по количеству бюджетных мест
-            </button>
-          </li>
-        </ul>
+        {faculties.length == 0 ? (
+          ''
+        ) : (
+          <ul>
+            <span>Сортировать:</span>
+            <li>
+              <button
+                onClick={() => {
+                  resort('priсe');
+                }}
+                id="payment">
+                по оплате в год
+              </button>
+            </li>
+            <li>
+              <button
+                id="points"
+                onClick={() => {
+                  resort('score');
+                }}>
+                по проходному баллу
+              </button>
+            </li>
+            <li>
+              <button
+                id="places"
+                onClick={() => {
+                  resort('place');
+                }}>
+                по количеству бюджетных мест
+              </button>
+            </li>
+          </ul>
+        )}
       </div>
       <div className="specialization-body">
         <div className="specialization-row">
