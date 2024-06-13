@@ -1,0 +1,678 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/Banner/Banner.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.banner {
+  margin: 40px 0;
+}
+
+.banner__body {
+  position: relative;
+}
+
+.banner__imgFon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner__img {
+  position: relative;
+  height: 350px;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.banner__logo {
+  padding: 5px;
+  margin: 24px 0 0 24px;
+  background-color: white;
+  box-shadow: 0px 5px 6px rgba(44, 62, 106, 0.08);
+  border-radius: 10px;
+  justify-self: start;
+  align-self: start;
+  position: relative;
+  z-index: 30;
+}
+
+.banner__img-links {
+  margin: 0 20px 20px 0;
+  display: flex;
+  align-self: end;
+  justify-self: end;
+  position: relative;
+  z-index: 30;
+}
+.banner__img-links button {
+  margin-right: 20px;
+}
+.banner__img-links button:last-child {
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .banner__img-links {
+    margin: 0;
+  }
+}
+
+.banner__content {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+@media (max-width: 768px) {
+  .banner__content {
+    flex-direction: column;
+  }
+}
+
+.banner__info_title {
+  max-width: 850px;
+}
+
+.banner__list {
+  display: flex;
+  padding-left: 15px;
+}
+.banner__list li {
+  margin-right: 38px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.banner__list li.reviews::before {
+  content: "";
+  position: absolute;
+  background: url(/_next/static/media/star.ded8dcd1.svg) no-repeat center/cover;
+  width: 15px;
+  height: 15px;
+  left: -15px;
+  display: block;
+}
+@media (max-width: 768px) {
+  .banner__list li.reviews::before {
+    left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .banner__list li.reviews {
+    padding-left: 15px;
+  }
+}
+.banner__list li::before {
+  content: "";
+  position: absolute;
+  background: url(/_next/static/media/star.ded8dcd1.svg) no-repeat center/cover;
+  background: #767676;
+  border-radius: 36px;
+  width: 8px;
+  height: 8px;
+  left: -15px;
+}
+@media (max-width: 768px) {
+  .banner__list li::before {
+    display: none;
+  }
+}
+.banner__list li:last-child {
+  margin-right: 0;
+}
+@media (max-width: 900px) {
+  .banner__list {
+    margin-right: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .banner__list {
+    flex-direction: column-reverse;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner__links {
+    display: flex;
+  }
+}
+
+.banner__links-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner__links-items {
+  margin-right: 15px;
+}
+.banner__links-items:last-child {
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .banner__links-items {
+    margin: 0 15px 10px 0;
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 7px 13px rgba(49, 71, 129, 0.07);
+    border-radius: 49px;
+    padding: 13px;
+    width: auto !important;
+    height: auto !important;
+  }
+}
+
+.banner__links-items.fovorite {
+  font-size: 14px;
+  line-height: 157%;
+  width: 145px;
+  height: 40px;
+}
+.banner__links-items.fovorite span {
+  margin-left: 8.5px;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/Aside/Aside.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.aside {
+  margin-right: 55px;
+}
+@media (max-width: 1000px) {
+  .aside {
+    display: none;
+  }
+}
+
+.aside-list {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+}
+.aside-list li {
+  margin-bottom: 25px;
+}
+.aside-list li:last-child {
+  margin-bottom: 0;
+}
+
+.aside-list_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aside-list_title {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 133%;
+  letter-spacing: 0.03em;
+  color: #767676;
+  max-width: 200px;
+}
+
+.aside-list_amount {
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px;
+  font-family: "Formular";
+  font-size: 12px;
+  line-height: 16px;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/MainInformation/MainInformation.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.mainContent {
+  position: relative;
+}
+
+.mainContent-container {
+  display: flex;
+}
+
+.main__container {
+  display: flex;
+  position: relative;
+}
+
+.mainContent-body {
+  width: 100%;
+}
+
+.mainInformation {
+  margin-bottom: 50px;
+}
+
+.mainInformation-title {
+  margin-bottom: 16px;
+}
+
+.mainInformation-unuversStat {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mainInformation-card {
+  padding: 25px;
+  margin: 0 15px 15px 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: calc(50% - 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+}
+.mainInformation-card.column {
+  flex-direction: column;
+  align-items: stretch;
+}
+.mainInformation-card:nth-child(even) {
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .mainInformation-card {
+    margin-right: 0;
+    flex: 1 1 100%;
+  }
+}
+
+.bigcard {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: calc(60% - 15px);
+}
+@media (max-width: 768px) {
+  .bigcard {
+    flex: 1 1 100%;
+  }
+}
+
+.smallcard {
+  flex: 1 1 auto;
+}
+
+.mainInformation-item {
+  margin-right: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mainInformation-item:last-child {
+  margin-right: 0;
+}
+@media (max-width: 1000px) {
+  .mainInformation-item {
+    margin-right: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .mainInformation-item {
+    margin-right: 20%;
+  }
+}
+
+.mainInformation-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+.mainInformation-line::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #D8D8D8;
+  bottom: -10px;
+}
+.mainInformation-line:last-child::after {
+  content: "";
+  display: none;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  line-height: 157%;
+}
+
+#myCanvas {
+  min-width: 100%;
+  height: 350px;
+}
+
+._grafic {
+  overflow-x: scroll;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/Specialization/Specialization.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.specialization {
+  margin-bottom: 50px;
+}
+
+.specialization-header {
+  margin-bottom: 22px;
+}
+
+.specialization-filter ul {
+  display: flex;
+}
+.specialization-filter ul span {
+  margin-right: 20px;
+  font-size: 13px;
+  line-height: 154%;
+  color: #222222;
+}
+.specialization-filter ul li {
+  margin-right: 50px;
+  font-size: 13px;
+  line-height: 154%;
+}
+.specialization-filter ul li:last-child {
+  margin-right: 0px;
+}
+@media (max-width: 1000px) {
+  .specialization-filter {
+    display: none;
+  }
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/Specialization/SpecializationCard.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.specialization__card {
+  display: flex;
+  padding: 16px;
+  background-color: white;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  gap: 15px;
+}
+.specialization__card:last-child {
+  margin-bottom: 0px;
+}
+@media (max-width: 768px) {
+  .specialization__card {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}
+
+.specialization__card-section {
+  max-width: 420px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.specialization__card-section:nth-child(2)::after {
+  content: "";
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: #d8d8d8;
+  right: 0;
+}
+@media (max-width: 768px) {
+  .specialization__card-section:nth-child(2)::after {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .specialization__card-section:last-child {
+    flex-direction: row;
+  }
+}
+@media (max-width: 768px) {
+  .specialization__card-section {
+    max-width: 100%;
+  }
+}
+
+.specialization__card-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.specialization__card-stats::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #d8d8d8;
+  bottom: -10px;
+}
+.specialization__card-stats:last-child::after {
+  display: none;
+}
+@media (max-width: 768px) {
+  .specialization__card-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .specialization__card-stats::after {
+    display: none;
+  }
+}
+
+.specialization__card-photo {
+  max-width: 207px;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .specialization__card-photo {
+    max-width: 100%;
+  }
+}
+
+.specialization-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .specialization-line {
+    flex-direction: column;
+  }
+  .specialization-line::after {
+    display: none;
+  }
+}
+
+.specialization-code {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 200%;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.specialization-name {
+  font-family: "Formular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  color: #222222;
+}
+@media (max-width: 768px) {
+  .specialization-name {
+    margin-bottom: 21px;
+  }
+}
+
+.specialization-format {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  line-height: 157%;
+  color: #222222;
+}
+.specialization-format span {
+  padding: 7px;
+  margin: 0px 10px 10px 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 47px;
+}
+.specialization-format span:last-child {
+  margin: 0px 0px 10px 0px;
+}
+@media (max-width: 768px) {
+  .specialization-format {
+    margin-bottom: 21px;
+  }
+}
+
+.specialization-description {
+  max-width: 400px;
+  font-size: 13px;
+  line-height: 192%;
+}
+@media (max-width: 768px) {
+  .specialization-description {
+    display: none;
+  }
+}
+
+.specialization-all {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 192%;
+  color: #222222;
+}
+@media (max-width: 768px) {
+  .specialization-all {
+    display: none;
+  }
+}
+
+.specialization-line_text {
+  line-height: 167%;
+}
+
+.specialization__icons {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .specialization__icons {
+    display: none;
+  }
+}
+.specialization__icons > div {
+  margin-right: 10px;
+}
+
+.specialization-link {
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .specialization-link {
+    display: flex;
+    margin-top: 0;
+  }
+}
+
+.swiper-pagination {
+  position: static !important;
+  margin: 16px 0;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Main/Univers/AboutUnivers/AboutUnivers.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.univers-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  grid-gap: 8px;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  .univers-gallery {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+}
+
+.gallery-item {
+  position: relative;
+  padding: 0 0 85% 0;
+}
+.gallery-item img {
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 500px) {
+  .gallery-item img {
+    object-fit: none;
+  }
+}
+
+.big_item {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+@media (max-width: 768px) {
+  .big_item {
+    grid-column: span 1;
+  }
+}
+
+.univers-text {
+  margin-top: 10px;
+  padding: 24px;
+  background: white;
+  color: #222222;
+}
+.univers-text p {
+  margin-bottom: 40px;
+}
+.univers-text p:last-child {
+  margin-bottom: 0;
+}
+
+.univers-seeMore {
+  margin-top: 10px;
+  font-family: "Formular";
+  font-size: 18px;
+  line-height: 133%;
+  color: #0656b4;
+}
+
+._hideBlock {
+  padding: 0px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-out;
+}
+
+.hideBlock_visability {
+  max-height: 260px;
+}
+
+.isShow {
+  display: block;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/app/univers/[universitiesId]/Univers.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.main__body {
+  display: flex;
+  position: relative;
+}

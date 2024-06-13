@@ -31,7 +31,7 @@
     z-index: 30;
 }
 
-.banner__img_links {
+.banner__img-links {
     margin: 0 20px 20px 0;
     display: flex;
     align-self: end;
@@ -70,7 +70,7 @@
             &::before{
                 content: "";
                 position: absolute;
-                background: url("../../img/star.svg") no-repeat center/cover;
+                background: url("../../../../img/star.svg") no-repeat center/cover;
                 width: 15px;
                 height: 15px;
                 left: -15px;
@@ -90,7 +90,7 @@
         &::before{
             content: "";
             position: absolute;
-            background: url("../../img/star.svg") no-repeat center/cover;
+            background: url("../../../../img/star.svg") no-repeat center/cover;
             background: #767676;
             border-radius: 36px;
             width: 8px;
@@ -112,7 +112,7 @@
         padding-left: 0;
     }
 }
-.banner-links {
+.banner__links {
     @media(max-width: 768px){
         display: flex;
     }

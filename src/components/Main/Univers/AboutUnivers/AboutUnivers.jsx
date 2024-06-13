@@ -1,10 +1,7 @@
 import {useState} from 'react';
+import Image from 'next/image';
 import './AboutUnivers.scss';
-import photoUniverLG from '../../../../img/Univers/fotoUniverBG.jpg';
-import photoUniver from '../../../../img/Univers/fotoUnivers.jpg';
-import photoUniver2 from '../../../../img/Univers/fotoUnivers2.jpg';
-import photoUniver3 from '../../../../img/Univers/fotoUnivers3.jpg';
-import photoUniver4 from '../../../../img/Univers/fotoUnivers4.jpg';
+import {photoUniverLG, photoUniver, photoUniver2, photoUniver3, photoUniver4} from '../../../../img/Univers/_imgUnivrs';
 export default function AboutUnivers() {
   const [isVisable, setIsVisable] = useState(false);
   function showText() {
@@ -16,19 +13,19 @@ export default function AboutUnivers() {
       <div className="univers-body">
         <div className="univers-gallery">
           <div className="gallery-item big_item">
-            <img src={photoUniverLG} alt="Фото университета" />
+            <Image src={photoUniverLG} alt="Фото университета" />
           </div>
           <div className="gallery-item">
-            <img src={photoUniver4} alt="Фото университета" />
+            <Image src={photoUniver4} alt="Фото университета" />
           </div>
           <div className="gallery-item">
-            <img src={photoUniver} alt="Фото университета" />
+            <Image src={photoUniver} alt="Фото университета" />
           </div>
           <div className="gallery-item">
-            <img src={photoUniver2} alt="Фото университета" />
+            <Image src={photoUniver2} alt="Фото университета" />
           </div>
           <div className="gallery-item">
-            <img src={photoUniver3} alt="Фото университета" />
+            <Image src={photoUniver3} alt="Фото университета" />
           </div>
         </div>
         <div className="univers-text mediumTxtOS">

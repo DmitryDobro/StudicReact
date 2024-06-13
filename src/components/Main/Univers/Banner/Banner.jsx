@@ -1,5 +1,5 @@
 import './Banner.scss';
-
+import Image from 'next/image';
 import {UniversPhoto, logoUnivers, bell, heart, downold} from '../../../../img/_img';
 function Banner({university}) {
   return (
@@ -7,9 +7,9 @@ function Banner({university}) {
       <div className="container">
         <div className="banner__body">
           <div className="banner__img">
-            <img className="banner__imgFon" src={UniversPhoto} alt="" />
+            <Image className="banner__imgFon" src={UniversPhoto} alt="" />
             <div className="banner__logo">
-              <img src={logoUnivers} alt="" />
+              <Image src={logoUnivers} alt="" />
             </div>
             <div className="banner__img-links">
               <button className="btn notMobile">оставить отзыв</button>
@@ -34,14 +34,14 @@ function Banner({university}) {
             <div className="banner__links">
               <div className="banner__links-row ">
                 <div className="banner__links-items fovorite icon border" id="fovorite">
-                  <img src={heart} alt="" />
+                  <Image src={heart} alt="" />
                   <span className="notMobile">В Избранное</span>
                 </div>
                 <div className="banner__links-items" id="bell">
-                  <img src={bell} alt="" />
+                  <Image src={bell} alt="" />
                 </div>
                 <div className="banner__links-items notMobile">
-                  <img src={downold} alt="" />
+                  <Image src={downold} alt="" />
                 </div>
               </div>
             </div>

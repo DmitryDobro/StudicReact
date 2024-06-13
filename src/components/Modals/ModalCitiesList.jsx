@@ -1,18 +1,16 @@
+'use client';
 import {createRef} from 'react';
 import './Modal.scss';
-import {useDispatch} from 'react-redux';
-import {ToggleCities} from '../../store/visableSlicer';
+import Link from 'next/link';
 
-function ModalCitiesList({isVisable, handleFilteredCities, citiesToRender,setIsVisable}) {
-  const dispatch = useDispatch();
+function ModalCitiesList({isVisable, handleFilteredCities, citiesToRender, setModalCitiesVisable}) {
   let textInput = createRef();
   function handleInput(evt) {
     handleFilteredCities(evt.target.value);
   }
   function test(city) {
     localStorage.setItem('city', JSON.stringify(city));
-    dispatch(ToggleCities(false));
-    setIsVisable(false)
+    setModalCitiesVisable(false);
     textInput.current.value = '';
   }
   return (
@@ -21,14 +19,13 @@ function ModalCitiesList({isVisable, handleFilteredCities, citiesToRender,setIsV
       <div className="modal__list">
         {citiesToRender.length > 0 ? (
           citiesToRender.map(city => (
-            <a key={city.id} href="#">
-              <span
-                onClick={() => {
-                  test(city);
-                }}
-                key={city.id}>
-                {city.name}
-              </span>
+            <a
+              key={city.id}
+              href="#"
+              onClick={() => {
+                test(city);
+              }}>
+              {city.name}
             </a>
           ))
         ) : (

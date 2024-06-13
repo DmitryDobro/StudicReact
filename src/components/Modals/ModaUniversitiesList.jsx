@@ -1,8 +1,7 @@
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
+'use client';
+import Link from 'next/link';
 import './Modal.scss';
-function ModaUniversitiesList({isVisable, closeModalUnivers}) {
-  const universities = useSelector(state => state.universities.universities);
+function ModaUniversitiesList({isVisable, closeModalUnivers, universities}) {
   function addUniversityToLS(university) {
     localStorage.setItem('university', JSON.stringify(university));
     closeModalUnivers();
@@ -12,14 +11,13 @@ function ModaUniversitiesList({isVisable, closeModalUnivers}) {
       <div className="modal__list">
         {universities.length > 0 ? (
           universities.map(university => (
-            <Link key={university.id} to={`/univers/${university.id}`}>
-              <span
-                onClick={() => {
-                  addUniversityToLS(university);
-                }}
-                key={university.id}>
-                {university.text}
-              </span>
+            <Link
+              key={university.id}
+              href={`/univers/${university.id}`}
+              onClick={() => {
+                addUniversityToLS(university);
+              }}>
+              {university.text}
             </Link>
           ))
         ) : (
