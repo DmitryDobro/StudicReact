@@ -20,12 +20,12 @@ async function findUniversities(params) {
 }
 export default async function RootLayout({children}) {
   const cities = await getData();
-  const univers = await findUniversities();
+  const univers = [];
 
   return (
     <html lang="ru">
       <body>
-        <Header cities={cities} univers={univers} findUniversities={findUniversities} />
+        <Header cities={cities} univers={univers} findUniversities={findUniversities}/>
         {children}
         <Footer />
       </body>

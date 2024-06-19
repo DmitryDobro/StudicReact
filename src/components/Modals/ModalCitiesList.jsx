@@ -3,13 +3,14 @@ import {createRef} from 'react';
 import './Modal.scss';
 import Link from 'next/link';
 
-function ModalCitiesList({isVisable, handleFilteredCities, citiesToRender, setModalCitiesVisable}) {
+function ModalCitiesList({isVisable, handleFilteredCities, citiesToRender, setModalCitiesVisable,setCityName}) {
   let textInput = createRef();
   function handleInput(evt) {
     handleFilteredCities(evt.target.value);
   }
   function test(city) {
     localStorage.setItem('city', JSON.stringify(city));
+    setCityName(city)
     setModalCitiesVisable(false);
     textInput.current.value = '';
   }

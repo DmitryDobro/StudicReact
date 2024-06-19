@@ -1,4 +1,6 @@
 import './MainInformation.scss';
+import Image from 'next/image';
+import {icon__fall, icon__check} from '../../../../img/_img';
 function MainInformation() {
   return (
     <div className="mainInformation">
@@ -30,19 +32,19 @@ function MainInformation() {
               <div className="mainInformation-line">
                 <span className="line-text mediumTxtOS">Государственный</span>
                 <span className="icon green">
-                  <img src="./images/check_24px.svg" alt="" />
+                  <Image src={icon__check} alt="Галочка" />
                 </span>
               </div>
               <div className="mainInformation-line">
                 <span className="line-text mediumTxtOS">Общежитие</span>
                 <span className="icon red">
-                  <img src="./images/close_24px.svg" alt="" />
+                  <Image src={icon__fall} alt="Крестик" />
                 </span>
               </div>
               <div className="mainInformation-line">
                 <span className="line-text mediumTxtOS">Военная кафедра</span>
                 <span className="icon green">
-                  <img src="./images/check_24px.svg" alt="" />
+                  <Image src={icon__check} alt="Галочка" />
                 </span>
               </div>
             </div>

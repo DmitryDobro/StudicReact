@@ -1,9 +1,17 @@
+'use client';
 import './Specialization.scss';
-import {useState, useEffect, useMemo} from 'react';
+import {useState, useEffect} from 'react';
 import SpecializationCard from './SpecializationCard';
-function Specialization({faculties}) {
+import {getUniversityFaculties} from '../../../../app/univers/[universitiesId]/fac';
+function Specialization() {
   const [facultiesRender, setFacultiesRender] = useState([]);
   const [addMore, setAddMore] = useState(5);
+  const [faculties, setFaculties] = useState([]);
+
+  useEffect(() => {
+    const university = JSON.parse(localStorage.getItem('university'));
+    getUniversityFaculties(university).then(data => setFaculties(data));
+  }, []);
   useEffect(() => {
     setFacultiesRender(faculties.slice(0, addMore));
   }, [faculties, addMore]);

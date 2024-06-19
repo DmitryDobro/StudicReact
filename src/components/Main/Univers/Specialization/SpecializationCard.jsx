@@ -1,15 +1,12 @@
-import {useState} from 'react';
-import './SpecializationCard.scss';
-import cardPhoto from '../../../../img/Tech.jpg';
-import icon__bank from '../../../../img/icon__bank.svg';
-import icon__flag from '../../../../img/icon__flag.svg';
-import icon__bed from '../../../../img/icon__bed.svg';
-function SpecializationCard({faculty}) {
 
+import Image from 'next/image';
+import './SpecializationCard.scss';
+import {cardPhoto, icon__bank, icon__flag, icon__bed} from '../../../../img/_img';
+function SpecializationCard({faculty}) {
   return (
     <div className="specialization__card">
       <div className="specialization__card-section">
-        <img className="specialization__card-photo" src={cardPhoto} alt="" />
+        <Image className="specialization__card-photo" src={cardPhoto} alt="" />
       </div>
       <div className="specialization__card-section">
         <div className="specialization-code">бакалавриат · 01.03.00</div>
@@ -28,13 +25,13 @@ function SpecializationCard({faculty}) {
       <div className="specialization__card-section">
         <div className="specialization__icons">
           <div className="icon grey">
-            <img src={icon__bank} alt="" />
+            <Image src={icon__bank} alt="" />
           </div>
           <div className="icon grey">
-            <img src={icon__flag} alt="" />
+            <Image src={icon__flag} alt="" />
           </div>
           <div className="icon grey">
-            <img src={icon__bed} alt="" />
+            <Image src={icon__bed} alt="" />
           </div>
         </div>
         <div className="specialization__card-stats">

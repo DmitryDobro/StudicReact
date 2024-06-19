@@ -26,7 +26,6 @@ export default function Univers() {
           item.place = place;
         });
         setFaculties(data);
-   
       });
     } else {
       return setUniversity(universities.find(f => f.id === id));

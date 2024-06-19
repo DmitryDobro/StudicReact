@@ -1,27 +1,33 @@
 'use client';
-// import {Link} from 'react-router-dom';
 import './/Header.scss';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useMemo} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {logo, arrow} from '../../img/_img.js';
 import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
+
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation} from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css';
 export default function Header({univers, cities, findUniversities}) {
   const [modalCitiesVisable, setModalCitiesVisable] = useState(false);
   const [citiesToRender, setCitiesToRender] = useState(cities);
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const [modalUniversVisable, setModalUniversVisable] = useState(false);
   const [valueInputUnivers, setValueInputUnivers] = useState('');
-     const [findingUniversities, setFindingUniversities] = useState([]);
-  // const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
-  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
+  const [findingUniversities, setFindingUniversities] = useState([]);
+  const [cityName, setCityName] = useState('');
+
+  useEffect(() => {
+    setCityName(JSON.parse(localStorage.getItem('city')));
+  }, []);
 
   function handleFilteredCities(param) {
     let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
   }
-
   function handleModalCities() {
     setModalCitiesVisable(!modalCitiesVisable);
     setCitiesToRender(cities);
@@ -36,8 +42,7 @@ export default function Header({univers, cities, findUniversities}) {
     if (params.length >= 3) {
       setModalUniversVisable(true);
       let universities = await findUniversities(params);
-      setFindingUniversities(universities)
-      console.log(universities);
+      setFindingUniversities(universities);
     } else {
       setModalUniversVisable(false);
     }
@@ -61,13 +66,15 @@ export default function Header({univers, cities, findUniversities}) {
               <span className="header__city-arrow icon border">
                 <Image src={arrow} alt="" onClick={handleModalCities} />
               </span>
-              <span className="header__city-name">{cityFromLocalStorage ? cityFromLocalStorage.name : ''}</span>
+              <span className="header__city-name">
+                {cityName ? cityName.name : 'Выберите город'}
+              </span>
               <ModalCitiesList
                 isVisable={modalCitiesVisable}
                 citiesToRender={citiesToRender}
                 handleFilteredCities={handleFilteredCities}
                 setModalCitiesVisable={setModalCitiesVisable}
-                univers={univers}
+                setCityName={setCityName}
               />
             </div>
           </div>
@@ -77,7 +84,11 @@ export default function Header({univers, cities, findUniversities}) {
               <button className={`btn header__btn noneColor ${modalUniversVisable && 'header__btn_visable'}`} onClick={closeModalUnivers}>
                 X
               </button>
-              <ModaUniversitiesList isVisable={modalUniversVisable} closeModalUnivers={closeModalUnivers} universities={findingUniversities} />
+              <ModaUniversitiesList
+                isVisable={modalUniversVisable}
+                closeModalUnivers={closeModalUnivers}
+                universities={findingUniversities}
+              />
             </div>
           </div>
 
@@ -86,7 +97,7 @@ export default function Header({univers, cities, findUniversities}) {
             <div className="header__profile-name">Авторизация</div>
           </div> */}
         </div>
-        {/* <div className="header-navbar">
+        <div className="header-navbar">
           <div className="header-navbar-conteiner swiper">
             <Swiper
               className="header-navbar_list  swiper-wrapper"
@@ -94,7 +105,7 @@ export default function Header({univers, cities, findUniversities}) {
               loop={false}
               slidesPerView={'auto'}
               slidesPerGroup={2}
-              spaceBetween={25}
+              spaceBetween={50}
               simulateTouch={false}
               watchOverflow={true}
               keyboard={{
@@ -137,7 +148,7 @@ export default function Header({univers, cities, findUniversities}) {
           </div>
           <div className="swiper-button-prev"></div>
           <div className="swiper-button-next"></div>
-        </div> */}
+        </div>
       </div>
     </header>
   );

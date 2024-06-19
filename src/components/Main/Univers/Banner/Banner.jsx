@@ -1,3 +1,4 @@
+"use client"
 import './Banner.scss';
 import Image from 'next/image';
 import {UniversPhoto, logoUnivers, bell, heart, downold} from '../../../../img/_img';
