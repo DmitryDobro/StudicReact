@@ -1,4 +1,4 @@
-import {configureStore, combineReducers} from '@reduxjs/toolkit';
+import {configureStore, combineReducers, miniSerializeError} from '@reduxjs/toolkit';
 import visableSlicer from './visableSlicer';
 import citiesListSlicer from './citiesListSlicer';
 import universitiesListSlicer from './universitiesListSlicer';
@@ -16,3 +16,4 @@ export const store = configureStore({
     serializableCheck: false,
   })
 });
+

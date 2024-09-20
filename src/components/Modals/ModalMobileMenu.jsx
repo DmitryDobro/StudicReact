@@ -21,12 +21,12 @@ export function ModalMobileMenu() {
   }
   return (
     <section className={`modal modal_type_mobileMenu mobileMenu ${isVisable && 'modal_isVisable'}`}>
-      <div class="mobile-menu_conteiner">
-        <div class="mobileMenu__profile">
-          <div class="mobileMenu__profile_avatar">
+      <div className="mobile-menu_conteiner">
+        <div className="mobileMenu__profile">
+          <div className="mobileMenu__profile_avatar">
             <img src={avatar} alt="Фото пользователя" />
           </div>
-          <div class="mobileMenu__profile_name">Имя пользователя</div>
+          <div className="mobileMenu__profile_name">Имя пользователя</div>
         </div>
         <div className="mobileMenu__city-box">
           <span className="mobileMenu__city-arrow icon border">

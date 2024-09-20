@@ -1,8 +1,14 @@
-# React + Vite
+# Проек Студика по подбору института.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### В проекте реализовано:
+* сделано API для подключения к серверу hh.ru, для получение базы данных регионов РФ и институтов/универститов РФ
+* сделан поиск по регионам РФ и ВУЗам РФ
+* настроен динамический роутинг, при выборе ВУЗа отображается его название и список его институтов/факультетов
+* настроена сортировка факультетов ВУЗа
+* сделана адаптивная верстка
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Что сделать в планах:
+* Сделать авторизацию
+* Сделать более презентабельную стартовую страницу
+* Выложеть проект на сервер
