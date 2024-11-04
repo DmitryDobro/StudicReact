@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
@@ -8,8 +9,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ToggleUnivers} from '../../store/visableSlicer.js';
 import {addCities} from '../../store/citiesListSlicer.js';
 import {findUniversitiesReducer} from '../../store/universitiesListSlicer.js';
-import { ModalMobileMenu } from '../Modals/ModalMobileMenu.jsx';
-
+import {ModalMobileMenu} from '../Modals/ModalMobileMenu.jsx';
+import Login from '../Login/Login.jsx';
 function App() {
   const dispatch = useDispatch();
   const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
@@ -41,9 +42,8 @@ function App() {
         closeModal={closeModal}
       />
       <Main cities={cities}></Main>
-
       <Footer></Footer>
-      <ModalMobileMenu ></ModalMobileMenu>
+      <ModalMobileMenu></ModalMobileMenu>
     </>
   );
 }

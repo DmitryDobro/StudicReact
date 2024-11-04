@@ -92,7 +92,7 @@ function Header({findUniversities}) {
 
           <div className="header__item header__item_type_profile">
             <div className="header__profile-avatar"></div>
-            <div className="header__profile-name">Авторизация</div>
+            <p className="header__profile-name">Войти</p>
           </div>
         </div>
         <div className="header-navbar">
