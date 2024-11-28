@@ -1,7 +1,10 @@
+import './Modal.scss';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './Registration.scss';
+import {useDispatch, useSelector} from 'react-redux';
 function Registration({onRegister}) {
+  const dispatch = useDispatch();
+  const isVisable = useSelector(state => state.visable.modalRegistration);
   const [valuePassword, setValuePassword] = React.useState('');
   const [valueEmail, setValueEmail] = React.useState('');
   const [valueName, setValueName] = React.useState('');
@@ -13,9 +16,9 @@ function Registration({onRegister}) {
     onRegister(valueName, valuePassword, valueEmail);
   }
   return (
-    <section className="registration">
+    <section className={`modal modal_type_registration mobileMenu ${isVisable && 'modal_isVisable'}`}>
       <h1 className="registration__message">Добро пожаловать!</h1>
-      <form className="registration__form" onSubmit={handleSubmit}>
+      <form className="modal__form" onSubmit={handleSubmit}>
         <div className="registration__form-container">
           <div className="registration__field">
             <label htmlFor="name" className="registration__label">
@@ -66,9 +69,9 @@ function Registration({onRegister}) {
         </div>
         <div className="registration__login">
           <p className="registration__login-text">Уже зарегистрированы?</p>
-          <Link to="/signin" className="registration__login-link">
+          <p className="registration__login-link">
             Войти
-          </Link>
+          </p>
         </div>
       </form>
     </section>

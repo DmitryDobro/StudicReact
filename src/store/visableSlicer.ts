@@ -6,6 +6,7 @@ const visableSlice = createSlice({
     modalCitiesVisable: false,
     modalUniversVisable: false,
     modalMenuVisable: false,
+    modalRegistration: false,
   },
   reducers: {
     ToggleCities(state) {
@@ -17,8 +18,11 @@ const visableSlice = createSlice({
     ToggleMobileMenu(state) {
       state.modalMenuVisable = !state.modalMenuVisable;
     },
+    ToggleRegistration(state) {
+      state.modalRegistration = !state.modalRegistration;
+    },
   },
 });
 
 export default visableSlice.reducer;
-export const {ToggleCities, ToggleUnivers, ToggleMobileMenu} = visableSlice.actions;
+export const {ToggleCities, ToggleUnivers, ToggleMobileMenu,ToggleRegistration} = visableSlice.actions;

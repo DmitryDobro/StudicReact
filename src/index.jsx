@@ -8,12 +8,11 @@ import './vendor/normalize.scss';
 import './vendor/globalStyle.scss';
 import {Provider} from 'react-redux';
 // import { store } from './store/index.js';
-console.log(123);
 
-import {store} from './store/index.js';
+import {store} from './store/index';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='StudicReact'>
       <Provider store={store}>
         <App />
       </Provider>

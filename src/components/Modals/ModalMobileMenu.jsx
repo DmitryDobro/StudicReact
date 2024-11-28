@@ -1,9 +1,10 @@
-import {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import './Modal.scss';
-import {avatar, arrow} from '../../img/_img.js';
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {avatar, arrow, logo} from '../../img/_img.js';
 import ModalCitiesList from './ModalCitiesList.jsx';
-import {ToggleCities} from '../../store/visableSlicer.js';
+import {ToggleMobileMenu} from '../../store/visableSlicer';
+import {Link} from 'react-router-dom';
 export function ModalMobileMenu() {
   const dispatch = useDispatch();
   let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
@@ -19,10 +20,20 @@ export function ModalMobileMenu() {
     let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
   }
+  function handleClose() {
+    dispatch(ToggleMobileMenu());
+  }
   return (
     <section className={`modal modal_type_mobileMenu mobileMenu ${isVisable && 'modal_isVisable'}`}>
+      <span className="modal__closeIcon" onClick={handleClose}>
+        &times;
+      </span>
       <div className="mobile-menu_conteiner">
+      
         <div className="mobileMenu__profile">
+        <Link className="mobileMenu__logo" to="/">
+          <img src={logo} alt="Логотип" />
+        </Link>
           <div className="mobileMenu__profile_avatar">
             <img src={avatar} alt="Фото пользователя" />
           </div>

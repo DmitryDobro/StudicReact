@@ -1,16 +1,17 @@
 import {useState, useEffect} from 'react';
 import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
 import './App.css';
-import Header from '../Header/Header.jsx';
+import Header from '../Header/Header';
 import Main from '../Main/Main.jsx';
 import {api} from '../../utils/Api.js';
 import Footer from '../Footer/Footer.jsx';
 import {useDispatch, useSelector} from 'react-redux';
-import {ToggleUnivers} from '../../store/visableSlicer.js';
-import {addCities} from '../../store/citiesListSlicer.js';
-import {findUniversitiesReducer} from '../../store/universitiesListSlicer.js';
+import {ToggleUnivers} from '../../store/visableSlicer';
+import {addCities} from '../../store/citiesListSlicer';
+import {findUniversitiesReducer} from '../../store/universitiesListSlicer';
 import {ModalMobileMenu} from '../Modals/ModalMobileMenu.jsx';
 import Login from '../Login/Login.jsx';
+import Registration from '../Modals/ModalRegistration.jsx';
 function App() {
   const dispatch = useDispatch();
   const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
@@ -44,6 +45,7 @@ function App() {
       <Main cities={cities}></Main>
       <Footer></Footer>
       <ModalMobileMenu></ModalMobileMenu>
+      <Registration></Registration>
     </>
   );
 }

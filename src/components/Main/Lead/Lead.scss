@@ -11,4 +11,7 @@
   text-align: center;
   font-size: 66px;
   max-width: 900px;
+  @media (max-width: 600px) {
+    font-size: 36px;
+  }
 }

@@ -1,12 +1,13 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
+const initialState:{universities:string[]} = {
+  universities: []
+}
 const universitiesListSlicer = createSlice({
   name: 'universitiesList',
-  initialState: {
-    universities: [],
-  },
+  initialState,
   reducers: {
-    findUniversitiesReducer(state, action) {
+    findUniversitiesReducer(state, action:PayloadAction<string[]>) {
       state.universities = action.payload;
     },
   },

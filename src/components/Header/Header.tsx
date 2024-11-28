@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -9,23 +9,33 @@ import './/Header.scss';
 import {logo, arrow} from '../../img/_img.js';
 import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
+import {ToggleMobileMenu, ToggleUnivers, ToggleRegistration} from '../../store/visableSlicer.js';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { RootState } from '../../store';
+import { findUniversitiesReducer } from '../../store/universitiesListSlicer';
+interface HeaderProps{
+  findUniversities: (arg:string) => void;
+  }
 
-import {ToggleCities, ToggleMobileMenu, ToggleUnivers} from '../../store/visableSlicer.js';
-
-function Header({findUniversities}) {
+function Header({findUniversities}:HeaderProps) {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const [valueInputUnivers, setValueInputUnivers] = useState('');
-  const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);
+  const modalUniversVisable = useAppSelector(state => state.visable.modalUniversVisable);
 
-  const cities = useSelector(state => state.cities.cities);
-  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
+const dispatch2 = useAppDispatch()
+const findTest = findUniversitiesReducer
+
+  // const cities = useSelector((state:RootState) => state.cities.cities);
+  const cities = useAppSelector(state => state.cities.cities)
+  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city')!);
   const [citiesToRender, setCitiesToRender] = useState(cities);
   const dispatch = useDispatch();
   // const modalCitiesVisable = useSelector(state => state.visable.modalCitiesVisable);
   const [modalCitiesVisable, setModalCitiesVisable] = useState(false);
 
-  function handleFilteredCities(param) {
-    let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
+  function handleFilteredCities(param: string) {
+    let findCities = cities.filter((item: { name: string; }) => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
   }
 
@@ -37,24 +47,25 @@ function Header({findUniversities}) {
     dispatch(ToggleUnivers(false));
     setValueInputUnivers('');
   }
-  function handleInput(evt) {
+  function handleInput(evt: React.ChangeEvent<HTMLInputElement>) {
     let params = evt.target.value;
     setValueInputUnivers(params);
-    return function (dispatch) {
-      dispatch(findUniversities(params));
+    return function (dispatch2: (arg0: void) => void) {
+      dispatch2(findUniversities(params));
     };
   }
   function handleMobileMenu() {
     dispatch(ToggleMobileMenu());
-    setBurgerIsActive(!burgerIsActive);
+    // setBurgerIsActive(!burgerIsActive);
+  }
+  function handleRegistration(){
+    dispatch(ToggleRegistration());
   }
   return (
     <header className="header">
       <div className="container">
         <div className="header__content">
-          <div className={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
-            <span></span>
-          </div>
+          
           <div className="header__item">
             <Link className="header__logo" to="/">
               <img src={logo} alt="Логотип" />
@@ -80,7 +91,7 @@ function Header({findUniversities}) {
                 placeholder="Учебное заведение"
                 value={valueInputUnivers}
                 onChange={evt => {
-                  dispatch(handleInput(evt));
+                  dispatch2(handleInput(evt));
                 }}
               />
               <button className={`btn header__btn noneColor   ${modalUniversVisable && 'header__btn_visable'}`} onClick={closeModalUnivers}>
@@ -92,7 +103,10 @@ function Header({findUniversities}) {
 
           <div className="header__item header__item_type_profile">
             <div className="header__profile-avatar"></div>
-            <p className="header__profile-name">Войти</p>
+            <p className="header__profile-name" onClick={handleRegistration}>Войти</p>
+          </div>
+          <div className={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
+            <span></span>
           </div>
         </div>
         <div className="header-navbar">
