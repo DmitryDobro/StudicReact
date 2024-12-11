@@ -7,8 +7,8 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import './/Header.scss';
 import {logo, arrow} from '../../img/_img.js';
-import ModalCitiesList from '../Modals/ModalCitiesList.jsx';
-import ModaUniversitiesList from '../Modals/ModaUniversitiesList.jsx';
+import ModalCitiesList from '../Modals/ModalCitiesList';
+import ModaUniversitiesList from '../Modals/ModaUniversitiesList';
 import {ToggleMobileMenu, ToggleUnivers, ToggleRegistration} from '../../store/visableSlicer.js';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -78,7 +78,6 @@ const findTest = findUniversitiesReducer
               <ModalCitiesList
                 isVisable={modalCitiesVisable}
                 setIsVisable={setModalCitiesVisable}
-                cities={cities}
                 citiesToRender={citiesToRender}
                 handleFilteredCities={handleFilteredCities}
               />
