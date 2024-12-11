@@ -2,22 +2,24 @@ import './Modal.scss';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {avatar, arrow, logo} from '../../img/_img.js';
-import ModalCitiesList from './ModalCitiesList.jsx';
+import ModalCitiesList from './ModalCitiesList';
 import {ToggleMobileMenu} from '../../store/visableSlicer';
 import {Link} from 'react-router-dom';
+import {useAppSelector} from '../../hooks/redux';
+import React from 'react';
 export function ModalMobileMenu() {
   const dispatch = useDispatch();
-  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city'));
-  const isVisable = useSelector(state => state.visable.modalMenuVisable);
+  let cityFromLocalStorage = JSON.parse(localStorage.getItem('city')!);
+  const isVisable = useAppSelector(state => state.visable.modalMenuVisable);
   const [modalCitiesVisable, setModalCitiesVisable] = useState(false);
-  const cities = useSelector(state => state.cities.cities);
+  const cities = useAppSelector(state => state.cities.cities);
   const [citiesToRender, setCitiesToRender] = useState(cities);
   function handleModalCities() {
     setModalCitiesVisable(!modalCitiesVisable);
     setCitiesToRender(cities);
   }
-  function handleFilteredCities(param) {
-    let findCities = cities.filter(item => item.name.toLowerCase().includes(param.toLowerCase()));
+  function handleFilteredCities(param: string) {
+    let findCities = cities.filter((item: {name: string}) => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
   }
   function handleClose() {
@@ -29,11 +31,10 @@ export function ModalMobileMenu() {
         &times;
       </span>
       <div className="mobile-menu_conteiner">
-      
         <div className="mobileMenu__profile">
-        <Link className="mobileMenu__logo" to="/">
-          <img src={logo} alt="Логотип" />
-        </Link>
+          <Link className="mobileMenu__logo" to="/">
+            <img src={logo} alt="Логотип" />
+          </Link>
           <div className="mobileMenu__profile_avatar">
             <img src={avatar} alt="Фото пользователя" />
           </div>
@@ -47,7 +48,6 @@ export function ModalMobileMenu() {
           <ModalCitiesList
             isVisable={modalCitiesVisable}
             setIsVisable={setModalCitiesVisable}
-            cities={cities}
             citiesToRender={citiesToRender}
             handleFilteredCities={handleFilteredCities}
           />

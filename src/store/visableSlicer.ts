@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const visableSlice = createSlice({
   name: 'visable',
@@ -9,7 +9,7 @@ const visableSlice = createSlice({
     modalRegistration: false,
   },
   reducers: {
-    ToggleCities(state) {
+    ToggleCities(state, action:PayloadAction<boolean>) {
       state.modalCitiesVisable = !state.modalCitiesVisable;
     },
     ToggleUnivers(state, action) {

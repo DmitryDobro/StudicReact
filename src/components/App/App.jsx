@@ -9,9 +9,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ToggleUnivers} from '../../store/visableSlicer';
 import {addCities} from '../../store/citiesListSlicer';
 import {findUniversitiesReducer} from '../../store/universitiesListSlicer';
-import {ModalMobileMenu} from '../Modals/ModalMobileMenu.jsx';
+import {ModalMobileMenu} from '../Modals/ModalMobileMenu';
 import Login from '../Login/Login.jsx';
-import Registration from '../Modals/ModalRegistration.jsx';
+import Registration from '../Modals/ModalRegistration';
 function App() {
   const dispatch = useDispatch();
   const modalUniversVisable = useSelector(state => state.visable.modalUniversVisable);

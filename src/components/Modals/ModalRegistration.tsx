@@ -1,17 +1,16 @@
 import './Modal.scss';
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-function Registration({onRegister}) {
-  const dispatch = useDispatch();
-  const isVisable = useSelector(state => state.visable.modalRegistration);
+import React, {ChangeEvent, FormEvent} from 'react';
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+function Registration({onRegister}: {onRegister: (valueName: string, valuePassword: string, valueEmail: string) => void}) {
+  const dispatch = useAppDispatch();
+  const isVisable = useAppSelector(state => state.visable.modalRegistration);
   const [valuePassword, setValuePassword] = React.useState('');
   const [valueEmail, setValueEmail] = React.useState('');
   const [valueName, setValueName] = React.useState('');
-  const handleChangeValueEmail = e => setValueEmail(e.target.value);
-  const handleChangeValuePassword = e => setValuePassword(e.target.value);
-  const handleChangeValueName = e => setValueName(e.target.value);
-  function handleSubmit(evt) {
+  const handleChangeValueEmail = (e: ChangeEvent<HTMLInputElement>) => setValueEmail(e.target.value);
+  const handleChangeValuePassword = (e: ChangeEvent<HTMLInputElement>) => setValuePassword(e.target.value);
+  const handleChangeValueName = (e: ChangeEvent<HTMLInputElement>) => setValueName(e.target.value);
+  function handleSubmit(evt:FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     onRegister(valueName, valuePassword, valueEmail);
   }
@@ -69,9 +68,7 @@ function Registration({onRegister}) {
         </div>
         <div className="registration__login">
           <p className="registration__login-text">Уже зарегистрированы?</p>
-          <p className="registration__login-link">
-            Войти
-          </p>
+          <p className="registration__login-link">Войти</p>
         </div>
       </form>
     </section>

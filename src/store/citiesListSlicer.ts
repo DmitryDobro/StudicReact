@@ -9,6 +9,7 @@ const citiesListSlicer = createSlice({
     addCities(state, action) {
       state.cities = action.payload;
     },
+    
   },
 });
 
