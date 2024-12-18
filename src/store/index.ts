@@ -2,11 +2,13 @@ import {configureStore, combineReducers, miniSerializeError} from '@reduxjs/tool
 import visableSlicer from './visableSlicer';
 import citiesListSlicer from './citiesListSlicer';
 import universitiesListSlicer from './universitiesListSlicer';
+import userInfoSlicer from './userInfoSlicer';
 
 const rootReducer = combineReducers({
   visable: visableSlicer,
   cities: citiesListSlicer,
   universities: universitiesListSlicer,
+  userInfo: userInfoSlicer,
 });
 
 export const store = configureStore({

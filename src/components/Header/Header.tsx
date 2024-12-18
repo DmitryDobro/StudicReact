@@ -9,35 +9,37 @@ import './/Header.scss';
 import {logo, arrow} from '../../img/_img.js';
 import ModalCitiesList from '../Modals/ModalCitiesList';
 import ModaUniversitiesList from '../Modals/ModaUniversitiesList';
-import {ToggleMobileMenu, ToggleUnivers, ToggleRegistration} from '../../store/visableSlicer.js';
+import {ToggleMobileMenu, ToggleUnivers, ToggleRegistration, ToggleIsLogin, ToggleModalUserInfo} from '../../store/visableSlicer.js';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { RootState } from '../../store';
-import { findUniversitiesReducer } from '../../store/universitiesListSlicer';
-interface HeaderProps{
-  findUniversities: (arg:string) => void;
-  }
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
+import {RootState} from '../../store';
+import {findUniversitiesReducer} from '../../store/universitiesListSlicer';
+interface HeaderProps {
+  findUniversities: (arg: string) => void;
+}
 
-function Header({findUniversities}:HeaderProps) {
+function Header({findUniversities}: HeaderProps) {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const [valueInputUnivers, setValueInputUnivers] = useState('');
   const modalUniversVisable = useAppSelector(state => state.visable.modalUniversVisable);
-
-const dispatch2 = useAppDispatch()
-const findTest = findUniversitiesReducer
+  const userInfo = useAppSelector(state => state.userInfo);
+  const isLogin = useAppSelector(state => state.visable.isLogin);
+  const dispatch = useAppDispatch();
+  const findTest = findUniversitiesReducer;
 
   // const cities = useSelector((state:RootState) => state.cities.cities);
-  const cities = useAppSelector(state => state.cities.cities)
+  const cities = useAppSelector(state => state.cities.cities);
   let cityFromLocalStorage = JSON.parse(localStorage.getItem('city')!);
   const [citiesToRender, setCitiesToRender] = useState(cities);
-  const dispatch = useDispatch();
+
   // const modalCitiesVisable = useSelector(state => state.visable.modalCitiesVisable);
   const [modalCitiesVisable, setModalCitiesVisable] = useState(false);
 
   function handleFilteredCities(param: string) {
-    let findCities = cities.filter((item: { name: string; }) => item.name.toLowerCase().includes(param.toLowerCase()));
+    let findCities = cities.filter((item: {name: string}) => item.name.toLowerCase().includes(param.toLowerCase()));
     setCitiesToRender(findCities);
   }
+
 
   function handleModalCities() {
     setModalCitiesVisable(!modalCitiesVisable);
@@ -50,22 +52,31 @@ const findTest = findUniversitiesReducer
   function handleInput(evt: React.ChangeEvent<HTMLInputElement>) {
     let params = evt.target.value;
     setValueInputUnivers(params);
-    return function (dispatch2: (arg0: void) => void) {
-      dispatch2(findUniversities(params));
+    return function (dispatch: (arg0: void) => void) {
+      dispatch(findUniversities(params));
     };
   }
   function handleMobileMenu() {
     dispatch(ToggleMobileMenu());
     // setBurgerIsActive(!burgerIsActive);
   }
-  function handleRegistration(){
+  function handleRegistration() {
     dispatch(ToggleRegistration());
   }
+  function handleLogout() {
+    dispatch(ToggleIsLogin(false));
+    localStorage.removeItem('jwt');
+    localStorage.setItem('isLogin', 'false');
+    console.log(userInfo);
+    
+  }
+function handleOpenUserInfo(){
+  dispatch(ToggleModalUserInfo())
+}
   return (
     <header className="header">
       <div className="container">
         <div className="header__content">
-          
           <div className="header__item">
             <Link className="header__logo" to="/">
               <img src={logo} alt="Логотип" />
@@ -90,7 +101,7 @@ const findTest = findUniversitiesReducer
                 placeholder="Учебное заведение"
                 value={valueInputUnivers}
                 onChange={evt => {
-                  dispatch2(handleInput(evt));
+                  dispatch(handleInput(evt));
                 }}
               />
               <button className={`btn header__btn noneColor   ${modalUniversVisable && 'header__btn_visable'}`} onClick={closeModalUnivers}>
@@ -100,9 +111,17 @@ const findTest = findUniversitiesReducer
             </div>
           </div>
 
-          <div className="header__item header__item_type_profile">
-            <div className="header__profile-avatar"></div>
-            <p className="header__profile-name" onClick={handleRegistration}>Войти</p>
+          <div className="header__item">
+            {isLogin ? (
+              <div className='header__item_type_profile' onClick={handleOpenUserInfo}>
+                <img src={userInfo.imgUrl} className="header__profile-avatar"></img>
+                <span>{userInfo.name}</span>
+              </div>
+            ) : (
+              <Link className="header__profile-name" onClick={handleRegistration} to={'/signup'}>
+                Войти
+              </Link>
+            )}
           </div>
           <div className={`header__burger ${burgerIsActive && 'header__burger_active'}`} onClick={handleMobileMenu}>
             <span></span>

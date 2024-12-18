@@ -1,7 +1,10 @@
 import './Banner.scss';
-
 import {UniversPhoto, logoUnivers, bell, heart, downold} from '../../../../img/_img';
-function Banner({university}) {
+import React from 'react';
+interface BannerProps {
+  university: {area: {name: string}; text: string};
+}
+function Banner({university}: BannerProps) {
   return (
     <section className="banner">
       <div className="container">

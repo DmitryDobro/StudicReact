@@ -1,8 +1,12 @@
 import './Specialization.scss';
-import {useState, useEffect, useMemo} from 'react';
+import {useState, useEffect} from 'react';
 import SpecializationCard from './SpecializationCard';
-function Specialization({faculties}) {
-  const [facultiesRender, setFacultiesRender] = useState([]);
+import React from 'react';
+interface SpecializationProps {
+  faculties: [{name: string; place: number; score: number; priсe: number}];
+}
+function Specialization({faculties}: SpecializationProps) {
+  const [facultiesRender, setFacultiesRender] = useState([{}]);
   const [addMore, setAddMore] = useState(5);
   useEffect(() => {
     setFacultiesRender(faculties.slice(0, addMore));
@@ -13,8 +17,10 @@ function Specialization({faculties}) {
     setFacultiesRender(faculties.slice(0, addMore));
   }
 
-  function resort(parametr) {
-    setFacultiesRender([...facultiesRender].sort((a, b) => a[parametr] - b[parametr]));
+  function resort(parametr: string) {
+    setFacultiesRender(
+      [...facultiesRender].sort((a: {[index: string]: number}, b: {[index: string]: number}) => a[parametr] - b[parametr])
+    );
   }
 
   return (
@@ -26,7 +32,7 @@ function Specialization({faculties}) {
         } `}</span>
       </div>
       <div className="specialization-filter">
-        {faculties.length == 0 ? (
+        {Number(faculties) == 0 ? (
           ''
         ) : (
           <ul>
@@ -63,8 +69,8 @@ function Specialization({faculties}) {
       </div>
       <div className="specialization-body">
         <div className="specialization-row">
-          {facultiesRender.map(faculty => (
-            <SpecializationCard faculty={faculty} key={faculty.id} />
+          {facultiesRender.map((faculty, index) => (
+            <SpecializationCard key={index} faculty={faculty} />
           ))}
         </div>
         {facultiesRender.length < faculties.length && (

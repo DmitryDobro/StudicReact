@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {useState, ChangeEvent, FormEvent} from 'react';
 import {Link} from 'react-router-dom';
 import './Registration.scss';
-function Registration({onRegister}) {
-  const [valuePassword, setValuePassword] = React.useState('');
-  const [valueEmail, setValueEmail] = React.useState('');
-  const [valueName, setValueName] = React.useState('');
-  const handleChangeValueEmail = e => {
-    setValueEmail(e.target.value);
-  };
-  const handleChangeValuePassword = e => {
-    setValuePassword(e.target.value);
-  };
-  const handleChangeValueName = e => {
-    setValueName(e.target.value);
-  };
-  function handleSubmit(evt) {
+interface RegistrationProps {
+  onRegister: (valueName: string, valuePassword: string, valueEmail: string, valueImgUrl: string) => void;
+}
+function Registration({onRegister}: RegistrationProps) {
+  const [valuePassword, setValuePassword] = useState('');
+  const [valueEmail, setValueEmail] = useState('');
+  const [valueName, setValueName] = useState('');
+  const [valueImgUrl, setValueImgUrl] = useState('');
+
+  const handleChangeValueEmail = (e: ChangeEvent<HTMLInputElement>) => setValueEmail(e.target.value);
+  const handleChangeValuePassword = (e: ChangeEvent<HTMLInputElement>) => setValuePassword(e.target.value);
+  const handleChangeValueName = (e: ChangeEvent<HTMLInputElement>) => setValueName(e.target.value);
+  const handleChangeValueImgUrl = (e: ChangeEvent<HTMLInputElement>) => setValueImgUrl(e.target.value);
+
+  function handleSubmit(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
-    onRegister(valueName, valuePassword, valueEmail);
+    onRegister(valueName, valuePassword, valueEmail, valueImgUrl);
   }
   return (
     <section className="registration">
@@ -55,6 +56,20 @@ function Registration({onRegister}) {
             {/* <span className={`registration__input-error`}>{isShowErrorEmail && validateEmail(valueEmail).message}</span> */}
           </div>
           <div className="registration__field">
+            <label htmlFor="email" className="registration__label">
+              Ссылка на фото
+            </label>
+            <input
+              id="imgUrl"
+              placeholder="https://unsplash.com/"
+              type="imgUrl"
+              name="imgUrl"
+              className="registration__input"
+              onChange={handleChangeValueImgUrl}
+              required
+            />
+          </div>
+          <div className="registration__field">
             <label htmlFor="password" className="registration__label">
               Пароль
             </label>
@@ -83,3 +98,6 @@ function Registration({onRegister}) {
 }
 
 export default Registration;
+function setValueName(value: string) {
+  throw new Error('Function not implemented.');
+}

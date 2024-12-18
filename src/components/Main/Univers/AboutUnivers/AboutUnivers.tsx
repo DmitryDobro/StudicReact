@@ -5,6 +5,7 @@ import photoUniver from '../../../../img/Univers/fotoUnivers.jpg';
 import photoUniver2 from '../../../../img/Univers/fotoUnivers2.jpg';
 import photoUniver3 from '../../../../img/Univers/fotoUnivers3.jpg';
 import photoUniver4 from '../../../../img/Univers/fotoUnivers4.jpg';
+import React from 'react';
 export default function AboutUnivers() {
   const [isVisable, setIsVisable] = useState(false);
   function showText() {

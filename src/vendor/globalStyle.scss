@@ -10,7 +10,7 @@ $maxWidth: 1200;
   }
 }
 body {
-  background: #f1f1f1;
+  background: linear-gradient(0deg, #eef5fa, #eef5fa), linear-gradient(273.81deg, #9dcaff 3.67%, #cbe3ff 36.99%, #ebf5ff 52.84%);
   color: #767676;
   font-family: 'OpenSans';
   font-size: 20px;
@@ -18,10 +18,22 @@ body {
     overflow: hidden;
   }
 }
+.mainContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1215px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 .container {
   max-width: 1215px;
   margin: 0 auto;
   padding: 0 20px;
+  @media (max-width: 1000px) {
+    margin: 0;
+  }
 }
 #root {
   min-height: 100%;

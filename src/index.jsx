@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
-import App from './components/App/App.jsx';
+import App from './components/App/App';
 import './index.css';
 import './vendor/fonts/fonts.scss';
 import './vendor/normalize.scss';
@@ -11,11 +11,11 @@ import {Provider} from 'react-redux';
 
 import {store} from './store/index';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename='StudicReact'>
-      <Provider store={store}>
+  <BrowserRouter basename="StudicReact">
+    <Provider store={store}>
+      <StrictMode>
         <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+      </StrictMode>
+    </Provider>
+  </BrowserRouter>
 );

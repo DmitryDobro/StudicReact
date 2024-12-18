@@ -18,9 +18,13 @@
       margin-right: 50px;
       font-size: 13px;
       line-height: 154%;
+
       &:last-child {
         margin-right: 0px;
       }
+    }
+    button {
+      background: none;
     }
   }
   @media (max-width: 1000px) {
@@ -29,5 +33,3 @@
 }
 .specialization-body {
 }
-
-

@@ -1,3 +1,4 @@
+import React from 'react';
 import './MainInformation.scss';
 function MainInformation() {
   return (
@@ -16,7 +17,7 @@ function MainInformation() {
                 <span className="card-subtitle">бюджетных мест</span>
               </div>
             </div>
-            <div className="mainInformation-card _card">
+            {/* <div className="mainInformation-card _card">
               <div className="mainInformation-item  _item">
                 <span className="card-number boldTxt">1 место</span>
                 <span className="card-subtitle">в Санкт-Петербурге</span>
@@ -25,7 +26,7 @@ function MainInformation() {
                 <span className="card-number boldTxt">12 место</span>
                 <span className="card-subtitle">в РФ</span>
               </div>
-            </div>
+            </div> */}
             <div className="mainInformation-card column bigcard">
               <div className="mainInformation-line">
                 <span className="line-text mediumTxtOS">Государственный</span>
@@ -44,12 +45,6 @@ function MainInformation() {
                 <span className="icon green">
                   <img src="./images/check_24px.svg" alt="" />
                 </span>
-              </div>
-            </div>
-            <div className="mainInformation-card _card smallcard">
-              <div className="mainInformation-item  _item">
-                <span className="card-subtitle">Вы представитель УЗ?</span>
-                <button className="btn noneColor">получить доступ</button>
               </div>
             </div>
           </div>

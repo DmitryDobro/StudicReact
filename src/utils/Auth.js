@@ -8,14 +8,14 @@ class Auth {
     }
     return Promise.reject(new Error('Ошибка!'));
   }
-  register(name, password, email) {
+  register(name, password, email, img) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify({name, password, email}),
+      body: JSON.stringify({name, password, email, img}),
     }).then(this._getResonce);
   }
   login(email, password) {
@@ -28,16 +28,15 @@ class Auth {
       body: JSON.stringify({email, password}),
     }).then(this._getResonce);
   }
-  getDataUser(){
+  getDataUser(jwt) {
     return fetch(`${this._url}/users/me`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-          // Authorization: `Bearer ${token}`,
-        },
-      }).then(res => checkResponse(res));
-    
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+    }).then(this._getResonce);
   }
 }
 const authApi = new Auth();

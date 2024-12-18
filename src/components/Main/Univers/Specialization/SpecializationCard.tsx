@@ -1,11 +1,10 @@
-import {useState} from 'react';
 import './SpecializationCard.scss';
-import cardPhoto from '../../../../img/Tech.jpg';
-import icon__bank from '../../../../img/icon__bank.svg';
-import icon__flag from '../../../../img/icon__flag.svg';
-import icon__bed from '../../../../img/icon__bed.svg';
-function SpecializationCard({faculty}) {
-
+import {icon__bank, icon__bed, icon__flag, cardPhoto} from '../../../../img/_img';
+import React from 'react';
+interface SpecializationCardProps {
+  faculty: {name?: string; place?: number; score?: number; priсe?: number;};
+}
+function SpecializationCard({faculty}: SpecializationCardProps) {
   return (
     <div className="specialization__card">
       <div className="specialization__card-section">

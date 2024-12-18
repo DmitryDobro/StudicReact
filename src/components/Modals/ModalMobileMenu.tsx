@@ -30,6 +30,7 @@ export function ModalMobileMenu() {
       <span className="modal__closeIcon" onClick={handleClose}>
         &times;
       </span>
+      
       <div className="mobile-menu_conteiner">
         <div className="mobileMenu__profile">
           <Link className="mobileMenu__logo" to="/">
