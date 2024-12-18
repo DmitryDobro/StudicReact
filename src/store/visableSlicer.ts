@@ -7,7 +7,7 @@ const visableSlice = createSlice({
     modalUniversVisable: false,
     modalMenuVisable: false,
     modalRegistration: false,
-    modalUserInfo: true,
+    modalUserInfo: false,
     isLogin: JSON.parse(localStorage.getItem('isLoggin')!),
   },
   reducers: {
